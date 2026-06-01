@@ -25,8 +25,12 @@ export function SelectedPanel({ country, period, era, year }: Props): JSX.Elemen
       <div className="sp-head">
         <span className="sp-swatch" style={{ background: country.color }} aria-hidden />
         <div className="sp-name-block">
-          <h3 className="sp-name">{country.name}</h3>
-          {period && <span className="sp-fullname">{period.name}</span>}
+          <h3 className="sp-name">
+            {period ? period.name : country.name}
+            {period && showModernTag(country, period) && (
+              <span className="sp-modern"> (Modern {country.name})</span>
+            )}
+          </h3>
         </div>
       </div>
 
@@ -78,4 +82,19 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
 
 function fmtYear(y: number): string {
   return y <= 0 ? '1 CE' : `${y} CE`
+}
+
+/**
+ * Whether to append "(Modern <country>)" to a period's name. Shown only when the
+ * polity is genuinely the modern country's ancestor — skipped for multinational
+ * empires (modernEquivalent: false), for the contemporary era (it already *is*
+ * the modern state), and where the period name already starts with the modern
+ * name + " (" (e.g. "United Kingdom (Pax Britannica)") to avoid redundancy.
+ */
+export function showModernTag(country: Country, period: CountryPeriod): boolean {
+  return (
+    period.modernEquivalent !== false &&
+    period.eraId !== 'contemporary' &&
+    !period.name.startsWith(`${country.name} (`)
+  )
 }

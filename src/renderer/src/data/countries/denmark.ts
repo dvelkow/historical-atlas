@@ -28,6 +28,7 @@ const denmark: Country = {
       endYear: 1814,
       eraId: 'early-modern',
       name: 'Denmark–Norway',
+      modernEquivalent: false,
       government: 'Kingdom (later absolute monarchy)',
       capital: 'Copenhagen',
       religion: ['Lutheranism'],

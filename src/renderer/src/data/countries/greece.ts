@@ -12,6 +12,7 @@ const greece: Country = {
       endYear: 1453,
       eraId: 'early-medieval',
       name: 'Roman & Byzantine Greece',
+      modernEquivalent: false,
       government: 'Roman / Byzantine Empire',
       capital: 'Constantinople',
       religion: ['Greek polytheism → Eastern Orthodoxy'],

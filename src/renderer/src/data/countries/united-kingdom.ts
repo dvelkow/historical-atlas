@@ -12,6 +12,7 @@ const unitedKingdom: Country = {
       endYear: 410,
       eraId: 'roman',
       name: 'Roman Britain',
+      modernEquivalent: false,
       government: 'Roman province',
       capital: 'Londinium (London)',
       religion: ['Roman polytheism', 'later Christianity'],

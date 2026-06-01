@@ -12,6 +12,7 @@ const france: Country = {
       endYear: 481,
       eraId: 'roman',
       name: 'Roman Gaul',
+      modernEquivalent: false,
       government: 'Roman provinces',
       capital: 'Lugdunum (Lyon)',
       religion: ['Roman polytheism', 'later Christianity'],

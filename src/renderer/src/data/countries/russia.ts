@@ -65,6 +65,7 @@ const russia: Country = {
       endYear: 1991,
       eraId: 'cold-war',
       name: 'Soviet Union',
+      modernEquivalent: false,
       government: 'One-party socialist state',
       capital: 'Moscow',
       religion: ['State atheism'],

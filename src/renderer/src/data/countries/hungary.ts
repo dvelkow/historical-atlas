@@ -43,6 +43,7 @@ const hungary: Country = {
       endYear: 1918,
       eraId: 'world-wars',
       name: 'Austria-Hungary (Hungarian half)',
+      modernEquivalent: false,
       government: 'Dual monarchy',
       capital: 'Budapest',
       religion: ['Roman Catholicism'],

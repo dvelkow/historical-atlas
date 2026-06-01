@@ -49,8 +49,13 @@ export interface CountryPeriod {
   endYear: number
   /** Global era id (see eras.ts) this period belongs to. */
   eraId: string
-  /** The polity/state name during this period. */
+  /** The polity/state name during this period, e.g. "Bourbon France". */
   name: string
+  /** Whether this polity is genuinely the modern country's ancestor, so the
+   *  panel/label may append "(Modern <country>)". Defaults to true; set false
+   *  for multinational empires/unions where that would mislead (the Roman-era
+   *  provinces, Holy Roman Empire, Austria-Hungary, Soviet Union, etc.). */
+  modernEquivalent?: boolean
   government?: string
   capital?: string
   religion?: string[]

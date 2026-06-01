@@ -57,6 +57,21 @@ country is *never* dropped (so the USSR's wrapped polygon in 1960 still renders)
 hit-test (`elementsFromPoint`) that Spain/UK/Germany are no longer occluded at 1700/1715, and
 that 1960/2010 still contain Russia.
 
+### ✅ DONE: period-correct names + "(Modern X)" tag (2026-06-01)
+
+The left panel and on-map label now lead with the **period-correct** name (`period.name`,
+e.g. "Frankish Kingdom" in 700), not the modern country name. The panel appends a faint
+**"(Modern <country>)"** (`.sp-modern`) — but only when the polity is genuinely that modern
+nation's ancestor. It's suppressed for: the **contemporary** era (it already *is* the modern
+state), names that already start with `"<country> ("` (e.g. "United Kingdom (Pax Britannica)"),
+and periods flagged **`modernEquivalent: false`** in their `countries/*.ts` data — the Roman-era
+provinces and the multinational empires/unions (Holy Roman Empire, Austria-Hungary both halves,
+Polish–Lithuanian Commonwealth, Soviet Union, Roman & Byzantine Greece, Denmark–Norway). Named
+national predecessors *do* get the tag (Ottoman→Turkey, Russian Empire→Russia, German
+Empire→Germany). Logic lives in `showModernTag()` in `SelectedPanel.tsx`; the map label
+(`WorldMap.tsx`, via `periodFor`) shows the bare period name. To change which periods qualify,
+flip `modernEquivalent` on the period.
+
 ### ✅ DONE: early years looked "glitched" (2026-06-01)
 
 **Symptom:** at year ≤ ~700 the map looked broken/empty. **Cause:** not a projection or geometry

@@ -12,6 +12,7 @@ const italy: Country = {
       endYear: 476,
       eraId: 'roman',
       name: 'Roman Italy',
+      modernEquivalent: false,
       government: 'Roman Empire (heartland)',
       capital: 'Rome',
       religion: ['Roman polytheism', 'later Christianity'],

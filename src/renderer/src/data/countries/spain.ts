@@ -12,6 +12,7 @@ const spain: Country = {
       endYear: 472,
       eraId: 'roman',
       name: 'Roman Hispania',
+      modernEquivalent: false,
       government: 'Roman provinces',
       capital: 'Tarraco / Corduba',
       religion: ['Roman polytheism', 'later Christianity'],

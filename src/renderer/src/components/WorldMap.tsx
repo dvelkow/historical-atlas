@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import type { RelationType } from '../data/countryTypes'
-import { getCountry, relationsAt, bordersForYear, entityForBorderName, landPath } from '../data'
+import { getCountry, relationsAt, bordersForYear, entityForBorderName, landPath, periodFor } from '../data'
 import { MAP_WIDTH, MAP_HEIGHT, graticulePath, geoPathString, project, geoBounds } from '../map/projection'
 import { cloth } from '../audio'
 
@@ -37,6 +37,8 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
 
   const selected = selectedId ? getCountry(selectedId) : undefined
   const relations = useMemo(() => relationsAt(selected, year), [selected, year])
+  // Period-correct name for the on-map label (e.g. "Frankish Kingdom" in 700).
+  const selectedPeriod = useMemo(() => (selected ? periodFor(selected, year) : undefined), [selected, year])
 
   // Period-accurate border shapes for the epoch nearest this year.
   const { epoch, features } = useMemo(() => bordersForYear(year), [year])
@@ -282,7 +284,7 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
             <g transform={`translate(${selectedPt.x}, ${selectedPt.y})`} className="sel-marker">
               <circle r="3.4" fill="#fff7e6" stroke={selected.color} strokeWidth="1.4" filter="url(#glow)" />
               <text x="0" y="-8" textAnchor="middle" className="sel-label">
-                {selected.name}
+                {selectedPeriod?.name ?? selected.name}
               </text>
             </g>
           )}

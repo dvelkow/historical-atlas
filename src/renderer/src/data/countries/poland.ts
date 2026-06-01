@@ -27,6 +27,7 @@ const poland: Country = {
       endYear: 1795,
       eraId: 'early-modern',
       name: 'Polish–Lithuanian Commonwealth',
+      modernEquivalent: false,
       government: 'Elective monarchy / noble republic',
       capital: 'Kraków → Warsaw',
       religion: ['Roman Catholicism', 'Orthodoxy', 'Judaism'],

@@ -245,6 +245,13 @@ button {
   color: var(--ink);
   letter-spacing: 0.01em;
 }
+.sp-modern {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
 .sp-fullname {
   font-size: 11.5px;
   color: var(--muted);
