@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import type { RelationType } from '../data/countryTypes'
 import { getCountry, relationsAt, bordersForYear, entityForBorderName } from '../data'
-import { MAP_WIDTH, MAP_HEIGHT, graticulePath, geoPathString, project } from '../map/projection'
+import { MAP_WIDTH, MAP_HEIGHT, graticulePath, geoPathString, project, geoBounds } from '../map/projection'
 import { cloth } from '../audio'
 
 interface Props {
@@ -28,8 +28,6 @@ const REL_STROKE: Record<RelationType, string> = {
   interaction: 'rgba(224,161,78,0.95)'
 }
 
-const ZOOM_TO_COUNTRY = 1.2
-
 export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
   const svgRef = useRef<SVGSVGElement>(null)
   const [view, setView] = useState({ k: 1, x: 0, y: 0 })
@@ -45,10 +43,22 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
 
   const featurePaths = useMemo(
     () =>
-      features.features.map((f, i) => {
-        const name = f.properties?.name
-        return { i, name, entityId: entityForBorderName(name), d: geoPathString(f) }
-      }),
+      features.features
+        .map((f, i) => ({ i, name: f.properties?.name, entityId: entityForBorderName(f.properties?.name), f }))
+        // Drop globe-spanning wrap artifacts from the source data: a few polygons
+        // (e.g. "central Asian khanates" in the 1700/1715 epochs) cross the
+        // antimeridian and project to a frame-filling shape. As non-aliased context
+        // they're drawn with an opaque fill, so they paint over every country drawn
+        // before them — the "countries vanish at 1757 and earlier" bug. Only ever
+        // drop NON-interactive context; an aliased country (Russia/USSR also wrap in
+        // later epochs) is always kept and just renders translucent.
+        .filter((fp) => {
+          if (fp.entityId) return true
+          const b = geoBounds(fp.f)
+          if (!b) return false
+          return !(b[1][0] - b[0][0] > MAP_WIDTH * 2.5 || b[1][1] - b[0][1] > MAP_HEIGHT * 2.5)
+        })
+        .map((fp) => ({ i: fp.i, name: fp.name, entityId: fp.entityId, d: geoPathString(fp.f) })),
     [features]
   )
 
@@ -92,16 +102,16 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
     return new DOMPoint(clientX, clientY).matrixTransform(ctm.inverse())
   }
 
-  // Fly to the selected country when it changes.
+  // Selecting a country snaps back to the full-Europe view. The relation arrows
+  // fan out across the whole continent (war/ally/interaction), so both ends must
+  // be visible — zooming in on the selected polity would push the arrow targets
+  // off-frame and hide most of the map (the "we can only see Russia" problem).
+  // Selection is conveyed by the highlighted fill, the glowing marker, and the
+  // arrows; manual scroll/drag is still available for detail.
   useEffect(() => {
     if (!selected) return
-    const p = project(selected.centroid[0], selected.centroid[1])
-    if (!p) return
-    const k = ZOOM_TO_COUNTRY
-    const x = clamp(MAP_WIDTH / 2 - k * p[0], MAP_WIDTH * (1 - k), 0)
-    const y = clamp(MAP_HEIGHT / 2 - k * p[1], MAP_HEIGHT * (1 - k), 0)
     setAnimate(true)
-    setView({ k, x, y })
+    setView({ k: 1, x: 0, y: 0 })
     const t = window.setTimeout(() => setAnimate(false), 520)
     return () => window.clearTimeout(t)
   }, [selectedId]) // eslint-disable-line react-hooks/exhaustive-deps

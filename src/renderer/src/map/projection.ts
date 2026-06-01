@@ -46,3 +46,15 @@ export function project(lng: number, lat: number): [number, number] | null {
   if (!p) return null
   return [p[0], p[1]]
 }
+
+/**
+ * Projected bounding box [[x0,y0],[x1,y1]] of a GeoJSON feature in the fixed
+ * space, or null if it can't be measured. Used to detect globe-spanning
+ * wrap artifacts in the source data (see WorldMap's feature filter).
+ */
+export function geoBounds(f: unknown): [[number, number], [number, number]] | null {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const b = pathGen.bounds(f as any)
+  if (!b || !isFinite(b[0][0]) || !isFinite(b[1][0])) return null
+  return b
+}

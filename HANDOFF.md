@@ -6,33 +6,56 @@ what's done, what's in progress **right now**, and how to verify your work. Read
 
 ---
 
-## 🔴 IMMEDIATE TASK (in progress — finish this first)
+## ✅ DONE: projection + "whole map seeable" (2026-06-01)
 
-I was fixing a **map projection bug** and the fix is applied but **not yet verified or
-shipped to the desktop build.**
+The map projection bug **and** the related "we can only see Russia" complaint are both
+**fixed, verified across eras, and shipped to the desktop build.**
 
-**The bug:** `src/renderer/src/map/projection.ts` built the Europe-focused Mercator
-projection with `geoMercator().fitExtent(extent, VIEW_BBOX)` where `VIEW_BBOX` was a lat/lon
-**Polygon**. d3-geo treats polygon edges as geodesics and is winding-sensitive, so it fit a
-near-global area and rendered Europe at world scale — countries came out tiny and clustered
-(the user reported "we can only see Russia… I want the whole map seeable"). Root cause was
-**not** zoom; it was the projection.
+**The projection bug (fixed):** `src/renderer/src/map/projection.ts` built the Europe-focused
+Mercator projection with `geoMercator().fitExtent(extent, VIEW_BBOX)` where `VIEW_BBOX` was a
+lat/lon **Polygon**. d3-geo treats polygon edges as geodesics and is winding-sensitive, so it
+fit a near-global area and rendered Europe at world scale — countries came out tiny and
+clustered. The fix: `fitExtent` is now given a **MultiPoint of the four corner points**
+(`VIEW_CORNERS`). Confirmed in the running app — France renders ~99–129px wide, Europe fills
+the frame at proper scale at **100 / 800 / 1700 / 1914** (all screenshotted).
 
-**The fix (already written):** `fitExtent` is now given a **MultiPoint of the four corner
-points** (`VIEW_CORNERS`) instead of a polygon. Verified in isolation with a node script:
-polygon → `scale 117` (broken); MultiPoint → `scale 607`, France ~129px wide (correct).
-`npm run typecheck` passes.
+**The "only see Russia" complaint (fixed) — and the design call behind it:** the real cause
+of "we can only see Russia" after the projection fix was the **fly-to-centroid-on-select**
+behaviour (`WorldMap.tsx`). Centering+zooming on a huge eastern polity like Russia filled the
+frame with it and pushed western Europe off. We chased a fixed `ZOOM_TO_COUNTRY`, then a
+zoom-to-fit-bbox, before settling on the right answer: **selecting a country now snaps back to
+the full-Europe view (k=1), not a zoom-in.** Rationale — the relation **arrows** (war/ally/
+interaction) fan across the whole continent, so both ends must be visible; any zoom-to-country
+hides the arrow targets and most of the map. Selection is conveyed by the highlighted fill,
+the glowing marker, and the arrows. Manual scroll/drag still zooms for detail; double-click or
+the reset chip returns to full view. Verified: **Russia @ 1700 and @ 1914 both show the whole
+map** with arrows reaching France/Sweden/Poland/Germany/Turkey.
 
-**What you must still do:**
-1. `npm run web` (or use the Claude Preview MCP server named `atlas-web`, port 5199), open at
-   ~1470×860, **hard-reload**, and confirm: Europe fills the frame at proper scale, all
-   period polities render (not tiny/clustered), borders look right at 100 / 800 / 1700 / 1914.
-2. Re-check the user's original complaint: select **Russia at 1700** and confirm the **whole
-   map is visible** (western Europe no longer pushed off / shrunk). `ZOOM_TO_COUNTRY` in
-   `WorldMap.tsx` was lowered to `1.2` while chasing this; with the projection fixed you may
-   be able to restore a slightly stronger zoom (e.g. 1.4–1.6) — use judgement and a screenshot.
-3. Rebuild and relaunch the desktop app: `npm run build` then `npx electron .` (see "Running").
-4. Tell the user it's fixed, with a screenshot.
+(The old `ZOOM_TO_COUNTRY` constant was removed. `geoBounds` in `projection.ts` is now used
+by the wrap-artifact filter below.)
+
+If you want to revisit this, the only knob is the `useEffect` keyed on `selectedId` in
+`WorldMap.tsx` — it just `setView({ k: 1, x: 0, y: 0 })`.
+
+### ✅ DONE: countries vanished at 1757 and earlier (2026-06-01)
+
+**Symptom:** at year ≤ 1757 the map went "mostly empty" — Spain, the UK, the Dutch, the German
+states, Poland etc. disappeared (France/Austria/Russia stayed). Looked fine in screenshots
+because the missing area was painted the same dark navy as the sea (tip #2 bit me hard here).
+
+**Cause:** the `historical-basemaps` source has a few **antimeridian-wrap artifacts** — polygons
+whose ring winding makes d3-geo fill the *complement*, so they project to a frame-filling shape.
+The worst is **"central Asian khanates"** in the **1700 & 1715 epochs** (projected bbox ≈
+3817×3817, starting at x≈−1578, far west of Ireland). Because it has **no alias**, it's drawn
+with an **opaque** context fill, so it painted over every polygon drawn before it in the array.
+The same wrap exists for **Russia/USSR/UK/Spain** in 1800–2010 epochs, but those are **aliased**
+→ translucent tint → they don't hide anything, which is why >1757 looked fine.
+
+**Fix:** `WorldMap.tsx` `featurePaths` now drops globe-spanning wrap artifacts — but **only
+non-aliased context** (`!entityId && projected w>2.5·MAP_WIDTH || h>2.5·MAP_HEIGHT`). An aliased
+country is *never* dropped (so the USSR's wrapped polygon in 1960 still renders). Verified by
+hit-test (`elementsFromPoint`) that Spain/UK/Germany are no longer occluded at 1700/1715, and
+that 1960/2010 still contain Russia.
 
 There are also stray helper scripts in `/tmp` (`projtest*.cjs`, `checkborders.cjs`,
 `figlist*.cjs`) — diagnostics only, safe to ignore.
@@ -203,6 +226,85 @@ then add aliases.
   `release/`. Builds on macOS without Wine. App is **unsigned** (SmartScreen warns) and uses
   the default Electron icon. License caveat: the borders dataset is **GPL-3.0** — fine for
   personal/educational use; revisit before any closed-source public distribution.
+
+---
+
+## 🗺️ Tips for working on the map (read before touching `WorldMap.tsx` / `projection.ts`)
+
+The map is by far the trickiest part. Hard-won lessons:
+
+1. **Never `fitExtent` a lat/lon polygon.** Fit a **MultiPoint of corners** (`VIEW_CORNERS` in
+   `projection.ts`). d3-geo treats polygon edges as geodesics and is winding-sensitive, so a
+   rectangle polygon makes it fit a near-global area and render Europe at world scale (tiny,
+   clustered). This cost me an afternoon — don't reintroduce it. The projection is fixed to
+   lon −24…56 / lat 31…71; it does **not** recenter per selection.
+
+2. **Debug with DOM numbers, not screenshots.** The dark navy theme makes screenshots look
+   low-contrast and "empty," and I twice misjudged the map from them. Verify with
+   `preview_eval`: read `path.getBBox()` (geometry/viewBox coords, *pre*-zoom) and
+   `path.getBoundingClientRect()` (screen px, *post*-zoom). A correctly-scaled France is
+   ~100–130px wide in the viewBox; if it's ~20px, the projection is broken.
+
+3. **Two coordinate spaces.** The `<svg>` has a fixed `viewBox` (1000×760) and scales via CSS.
+   Zoom/pan is a `<g transform="translate(x,y) scale(k)">` wrapping the content (`view={k,x,y}`).
+   So `project()`/`geoPathString()` output is viewBox space; the on-screen position is that
+   *times* the zoom transform. `getBBox` ignores the transform; `getBoundingClientRect` includes
+   it. Use the right one for what you're checking.
+
+4. **Polygons keep their full real geometry.** Russia reaches the Pacific, the Ottomans reach
+   Arabia — they extend far off-frame east and the viewBox just clips them. A huge
+   `getBoundingClientRect` width for Russia is normal; **don't** try to clip geometry or
+   "fix" it. (This is also why selecting a giant eastern polity must *not* zoom-to-it.)
+
+5. **The pan clamp is load-bearing.** `x ∈ [W(1-k), 0]`, `y ∈ [H(1-k), 0]` keeps land covering
+   the frame; at `k=1` it forces `x=y=0` (snaps to the full-Europe fit). That's why "reset" and
+   "select → full view" both just `setView({k:1,x:0,y:0})`.
+
+6. **`didPan` prevents drag-selecting.** A pointermove >3px sets `didPan.current=true`;
+   `handleFeatureClick` bails if it's set, so a drag-release doesn't select a country. Any new
+   clickable map element must respect `didPan`.
+
+7. **The `animate` flag.** The CSS transition on the zoom `<g>` is enabled only for programmatic
+   moves (select/reset) and turned **off** before wheel/drag — otherwise dragging visibly lags
+   behind the cursor. Call `setAnimate(false)` before any manual view change.
+
+8. **Clicking is name→entity, via `borderAliases.ts`.** Map polygons are historical polities
+   ("Holy Roman Empire", "Carolingian Empire"), not modern countries. To make a polygon
+   clickable, add its **exact lower-cased name** to `BORDER_ALIAS`. The names have typos and
+   en-dashes ("Scottalnd", "Polish–Lithuanian Commonwealth") — match them verbatim. Re-run
+   `node scripts/build-borders.cjs`; it prints the full polity vocabulary across all epochs.
+   Big empires intentionally map to one representative entity (Roman→Italy, Carolingian→France).
+
+9. **Adding a country needs BOTH halves.** A `countries/<id>.ts` file (for the panel data +
+   the `centroid` that anchors its arrows) **and** alias entries for its polygon names per era
+   (so its shape is clickable/highlightable). One without the other = data with no shape, or a
+   shape with no data.
+
+10. **Arrows anchor at the entity `centroid`, not the polygon.** So set a sensible centroid
+    (Moscow for Russia, not the centroid of Siberia) or arrows start in the wrong place.
+    Arrowheads are SVG `marker`s with `markerWidth/Height=3` (the user's "50% smaller" request).
+
+11. **Borders are stepped, nearest-epoch snapshots** (`bordersForYear` → `epochForYear`,
+    23 epochs). A border change appears at the snapshot boundary, not the exact year. Add more
+    epochs in `scripts/build-borders.cjs` and rebuild if you need finer granularity.
+
+12. **Tints are subtle at full zoom on purpose** — only European polygons are drawn, so Europe
+    sits in open sea and the 0.34-alpha country fills read faint when fully zoomed out; they pop
+    once you scroll in. If you improve legibility, change the alpha/stroke, **not** the geometry.
+
+13. **Selection does not zoom** (current design — see the DONE section). It snaps to full Europe
+    so both ends of every relation arrow stay visible. The only knob is the `useEffect` keyed on
+    `selectedId`. If you ever re-add zoom-to-country, you must also keep the arrow targets in
+    frame, or the map "disappears" for big/eastern countries.
+
+14. **Beware globe-spanning wrap artifacts in the source data.** A few polygons (notably
+    "central Asian khanates" @1700/1715, and Russia/USSR/UK/Spain in later epochs) cross the
+    antimeridian and project to a frame-filling shape. A **non-aliased** one is opaque and paints
+    over every country drawn before it → "countries vanish" (this was the ≤1757 bug). `featurePaths`
+    filters them out via `geoBounds`, but **only non-interactive context** — never an aliased
+    country (those just wrap-tint harmlessly). To find them: the node snippet in the DONE section
+    builds the projection and lists any polygon with projected `w/h > 2.5×` the map or `x0` far
+    west. A *real* clean fix would dewrap/clip them in `scripts/build-borders.cjs`.
 
 ---
 
