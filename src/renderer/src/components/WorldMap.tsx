@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import type { RelationType } from '../data/countryTypes'
-import { getCountry, relationsAt, bordersForYear, entityForBorderName } from '../data'
+import { getCountry, relationsAt, bordersForYear, entityForBorderName, landPath } from '../data'
 import { MAP_WIDTH, MAP_HEIGHT, graticulePath, geoPathString, project, geoBounds } from '../map/projection'
 import { cloth } from '../audio'
 
@@ -58,7 +58,10 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
           if (!b) return false
           return !(b[1][0] - b[0][0] > MAP_WIDTH * 2.5 || b[1][1] - b[0][1] > MAP_HEIGHT * 2.5)
         })
-        .map((fp) => ({ i: fp.i, name: fp.name, entityId: fp.entityId, d: geoPathString(fp.f) })),
+        .map((fp) => ({ i: fp.i, name: fp.name, entityId: fp.entityId, d: geoPathString(fp.f) }))
+        // Drop degenerate features that project to nothing (e.g. the zero-size
+        // "Ostrogoths" slivers in the 600 epoch) — they render no path anyway.
+        .filter((fp) => fp.d.length > 0),
     [features]
   )
 
@@ -224,6 +227,7 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
           transform={zoomTransform}
           style={{ transition: animate ? 'transform 0.5s cubic-bezier(.4,0,.2,1)' : 'none' }}
         >
+          <path d={landPath} className="land-base" />
           <path d={graticulePath} className="graticule" />
 
           <g className="countries">

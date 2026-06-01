@@ -57,6 +57,17 @@ country is *never* dropped (so the USSR's wrapped polygon in 1960 still renders)
 hit-test (`elementsFromPoint`) that Spain/UK/Germany are no longer occluded at 1700/1715, and
 that 1960/2010 still contain Russia.
 
+### ✅ DONE: early years looked "glitched" (2026-06-01)
+
+**Symptom:** at year ≤ ~700 the map looked broken/empty. **Cause:** not a projection or geometry
+bug — the `historical-basemaps` data is genuinely sparse after Rome fragmented (the ~500–700 CE
+"600" epoch is scattered small polities with big gaps, plus abstract "hunter-gatherer/taiga"
+zones and two degenerate zero-size "Ostrogoths" polygons), so most of Europe rendered as empty
+sea. **Fix:** added a faint static present-day land backdrop behind the period polygons (see
+tip #12) so the continent is always visible; also drop zero-length/degenerate paths in
+`featurePaths`. Verified 100 / 600 (year 700) / 1700 / 2010 — ocean stays ocean (hit-tested),
+polities tint on land.
+
 There are also stray helper scripts in `/tmp` (`projtest*.cjs`, `checkborders.cjs`,
 `figlist*.cjs`) — diagnostics only, safe to ignore.
 
@@ -288,9 +299,13 @@ The map is by far the trickiest part. Hard-won lessons:
     23 epochs). A border change appears at the snapshot boundary, not the exact year. Add more
     epochs in `scripts/build-borders.cjs` and rebuild if you need finer granularity.
 
-12. **Tints are subtle at full zoom on purpose** — only European polygons are drawn, so Europe
-    sits in open sea and the 0.34-alpha country fills read faint when fully zoomed out; they pop
-    once you scroll in. If you improve legibility, change the alpha/stroke, **not** the geometry.
+12. **There's a static land backdrop now.** A faint present-day landmass (`landPath` in
+    `borders.ts`, from `assets/map/countries-110m.json`'s `land` object) is drawn behind the
+    period polygons (`.land-base`, fill `#141c2b`, dimmer than `.country` `#1b2740`). It exists
+    because early epochs (~500–700 CE) only have scattered polities, so without it the continent
+    read as empty sea ("glitched early years"). It fills land only — ocean stays the gradient —
+    and tracked polities tint on top. Tints still read faint when fully zoomed out; they pop on
+    zoom-in. If you improve legibility, change the alpha/stroke, **not** the geometry.
 
 13. **Selection does not zoom** (current design — see the DONE section). It snaps to full Europe
     so both ends of every relation arrow stay visible. The only knob is the `useEffect` keyed on

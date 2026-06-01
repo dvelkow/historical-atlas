@@ -549,6 +549,14 @@ button {
   height: 100%;
   display: block;
 }
+/* Static present-day landmass behind the period polygons, so sparse early
+   eras still read as Europe rather than empty sea. Dimmer than .country
+   (#1b2740) so tracked polities and context still stand out on top. */
+.land-base {
+  fill: #141c2b;
+  stroke: rgba(150, 176, 212, 0.22);
+  stroke-width: 0.5;
+}
 .graticule {
   fill: none;
   stroke: rgba(120, 150, 190, 0.07);

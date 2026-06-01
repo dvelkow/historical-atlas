@@ -1,12 +1,25 @@
 import { feature } from 'topojson-client'
 import type { FeatureCollection, Geometry } from 'geojson'
 import topoData from '../assets/borders/europe-borders.topo.json'
+import landTopo from '../assets/map/countries-110m.json'
+import { geoPathString } from '../map/projection'
 
 // Period-accurate European borders, packed as one shared-arc TopoJSON with one
 // object per epoch year (see scripts/build-borders.cjs). Source: the open
 // `historical-basemaps` dataset (GPL-3.0) — see ASSETS.md / SOURCES.md.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const topo = topoData as any
+
+// Static present-day landmass, drawn once as a faint backdrop behind the period
+// polygons. Early epochs (esp. ~500–700 CE) only have scattered small polities,
+// so without this the continent reads as empty sea; with it, undefined regions
+// show as dim land and the historical polities tint on top. Coastlines barely
+// move over 2000 years, so the modern outline aligns with the period shapes.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const landTopology = landTopo as any
+export const landPath: string = geoPathString(
+  feature(landTopology, landTopology.objects.land)
+)
 
 export interface BorderProps {
   name: string
