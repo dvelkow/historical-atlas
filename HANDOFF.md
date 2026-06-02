@@ -57,6 +57,21 @@ country is *never* dropped (so the USSR's wrapped polygon in 1960 still renders)
 hit-test (`elementsFromPoint`) that Spain/UK/Germany are no longer occluded at 1700/1715, and
 that 1960/2010 still contain Russia.
 
+### ✅ DONE: pre-1200 build-out (2026-06-02)
+
+The early timeline was sparse; it's now as dense as 1700–2025. Added early periods to
+**Sweden** (Viking age + medieval), **Netherlands** (Frisia + medieval counties) and
+**Turkey** (Byzantine Anatolia + Seljuk Rum); filled gaps in **Italy** (476–1000), **Austria**
+(476–976), **Spain** (472–711 Visigothic), **Hungary** (pre-1000 Avar/Magyar) and **Portugal**
+(868–1139 County); and enriched the thin Roman/early-medieval periods of France, Germany,
+Greece, Denmark, Poland, Russia and the UK to ~3 relations + 2 figures each. Added a block of
+**early-medieval border aliases** in `borderAliases.ts` (Frisians→netherlands, Picts/Scotland→uk,
+Avars/Croatia→hungary, Emirate of Sicily/Corsica→italy, etc.) so the early map is interactive:
+**18 clickable polities at 600, 24 at 800, 29 at 1000, 32 at 1100** (vs. 27 in 1750). All relation
+`to:` targets validated against existing entity ids (no Bohemia/Norway/Bulgaria entities yet — those
+polities alias to a representative neighbour; adding them as their own `countries/*.ts` is the next
+expansion).
+
 ### ✅ DONE: period-correct names + "(Modern X)" tag (2026-06-01)
 
 The left panel and on-map label now lead with the **period-correct** name (`period.name`,

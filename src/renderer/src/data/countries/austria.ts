@@ -17,9 +17,37 @@ const austria: Country = {
       capital: 'Carnuntum / Vindobona (Vienna)',
       religion: ['Roman polytheism'],
       culture: ['Romano-Celtic'],
-      summary: 'The Danube provinces of Noricum and Pannonia guarded the empire’s frontier against the Germanic and steppe peoples.',
-      relations: [],
-      figures: [{ name: 'Marcus Aurelius', title: 'Emperor (campaigned here)', years: 'r. 161–180' }]
+      summary: 'The Danube provinces of Noricum and Pannonia guarded the empire’s frontier against the Germanic and steppe peoples, their legionary towns the seeds of later cities like Vienna.',
+      relations: [
+        { to: 'germany', type: 'war', label: 'Marcomannic Wars', note: 'Marcus Aurelius fought the Germanic tribes along the Danube from Carnuntum.' },
+        { to: 'italy', type: 'interaction', label: 'A Roman frontier province', note: 'Noricum supplied iron and soldiers to the empire’s heartland.' }
+      ],
+      figures: [
+        { name: 'Marcus Aurelius', title: 'Emperor (campaigned here)', years: 'r. 161–180' },
+        { name: 'Saint Severinus', title: 'Apostle of Noricum', years: 'c. 410–482' }
+      ]
+    },
+    {
+      startYear: 476,
+      endYear: 976,
+      eraId: 'early-medieval',
+      name: 'Avar Pannonia & the Carolingian March',
+      modernEquivalent: false,
+      government: 'Migration-era duchies; Avar khaganate; Frankish march',
+      capital: 'Salzburg / Lorch',
+      religion: ['Christianity', 'Avar & Slavic paganism'],
+      culture: ['Bavarian', 'Slavic', 'Avar'],
+      summary:
+        'After Rome the Danube lands passed through Ostrogoths, Lombards and Bavarians while the Avars dominated the Pannonian plain — until Charlemagne destroyed the Avar khaganate and planted the eastern march (Ostmark) that gave Austria its name, even as Magyar raids overran it.',
+      relations: [
+        { to: 'france', type: 'war', label: 'Charlemagne destroys the Avars', note: 'Frankish campaigns (791–803) shattered the Avar khaganate.' },
+        { to: 'germany', type: 'interaction', label: 'Bavarian stem duchy & East Francia', note: 'The lands lay within Bavaria and then the East Frankish kingdom.' },
+        { to: 'hungary', type: 'war', label: 'Magyar raids', note: 'Hungarian horsemen devastated the march through the 10th century.' }
+      ],
+      figures: [
+        { name: 'Saint Rupert', title: 'Bishop of Salzburg', years: 'c. 660–710' },
+        { name: 'Arnulf of Carinthia', title: 'Carolingian Emperor', years: 'r. 896–899' }
+      ]
     },
     {
       startYear: 976,
@@ -30,11 +58,16 @@ const austria: Country = {
       capital: 'Vienna',
       religion: ['Roman Catholicism'],
       culture: ['German'],
-      summary: 'A frontier march grew into a duchy and, under the Habsburgs from 1278, the nucleus of a great dynastic power.',
+      summary: 'The eastern march grew into a duchy under the Babenbergs and, after Rudolf of Habsburg’s victory in 1278, became the nucleus of a great dynastic power straddling the Danube.',
       relations: [
-        { to: 'germany', type: 'interaction', label: 'Within the Holy Roman Empire', note: 'A leading principality of the Empire.' }
+        { to: 'germany', type: 'interaction', label: 'Within the Holy Roman Empire', note: 'A leading principality of the Empire, raised to a duchy in 1156.' },
+        { to: 'hungary', type: 'war', label: 'Babenberg–Árpád border wars', note: 'Recurrent fighting over the Danube frontier with the Hungarian crown.' },
+        { to: 'united-kingdom', type: 'interaction', label: 'Capture of Richard the Lionheart', note: 'Duke Leopold V seized the returning English king in 1192 and held him for ransom.' }
       ],
-      figures: [{ name: 'Rudolf I of Habsburg', title: 'King of the Romans', years: 'r. 1273–1291' }]
+      figures: [
+        { name: 'Leopold VI', title: 'Duke of Austria', years: 'r. 1198–1230' },
+        { name: 'Rudolf I of Habsburg', title: 'King of the Romans', years: 'r. 1273–1291' }
+      ]
     },
     {
       startYear: 1493,

@@ -8,6 +8,28 @@ const hungary: Country = {
   centroid: [19.4, 47.2],
   periods: [
     {
+      startYear: 568,
+      endYear: 1000,
+      eraId: 'early-medieval',
+      name: 'Avar Khaganate & the Magyar Conquest',
+      modernEquivalent: false,
+      government: 'Avar khaganate → Magyar tribal confederacy',
+      capital: '— (nomadic)',
+      religion: ['Steppe paganism (Tengrism)'],
+      culture: ['Avar', 'Magyar', 'Slavic'],
+      summary:
+        'For two centuries the Avars ruled the Carpathian Basin until Charlemagne broke them; then in 895 the Magyars under Árpád seized the plain and raided deep into Europe — until their defeat at Lechfeld (955) turned them toward a settled, Christian kingdom.',
+      relations: [
+        { to: 'germany', type: 'war', label: 'Magyar raids & Lechfeld (955)', note: 'Hungarian horsemen ravaged Germany until Otto I crushed them at Lechfeld.' },
+        { to: 'france', type: 'war', label: 'Charlemagne destroys the Avars', note: 'Frankish campaigns shattered the Avar khaganate around 800.' },
+        { to: 'italy', type: 'war', label: 'Raids into Italy', note: 'Magyar war-bands plundered Lombardy and beyond in the early 10th century.' }
+      ],
+      figures: [
+        { name: 'Árpád', title: 'Grand Prince of the Magyars', years: 'r. c. 895–907' },
+        { name: 'Saint Stephen I', title: 'First Christian king', years: 'r. 1000–1038' }
+      ]
+    },
+    {
       startYear: 1000,
       endYear: 1526,
       eraId: 'high-medieval',
@@ -16,11 +38,16 @@ const hungary: Country = {
       capital: 'Esztergom / Buda',
       religion: ['Roman Catholicism'],
       culture: ['Hungarian (Magyar)'],
-      summary: 'Founded by St Stephen in 1000, the Magyar kingdom was a major Central European power and a bulwark against the Ottomans until Mohács.',
+      summary: 'Founded by St Stephen in 1000, the Magyar kingdom was a major Central European power — surviving the Mongol storm of 1241 — and a bulwark against the Ottomans until Mohács.',
       relations: [
+        { to: 'austria', type: 'war', label: 'Wars with the Babenbergs & Habsburgs', note: 'Recurrent fighting over the Danube frontier.' },
+        { to: 'poland', type: 'interaction', label: 'Shared crowns', note: 'Angevin and Jagiellonian kings linked the Hungarian and Polish thrones.' },
         { to: 'turkey', type: 'war', label: 'Ottoman–Hungarian Wars', note: 'Ended at Mohács (1526), where the king and army were destroyed.' }
       ],
-      figures: [{ name: 'Matthias Corvinus', title: 'King of Hungary', years: 'r. 1458–1490' }]
+      figures: [
+        { name: 'Béla IV', title: 'King (rebuilt after the Mongols)', years: 'r. 1235–1270' },
+        { name: 'Matthias Corvinus', title: 'King of Hungary', years: 'r. 1458–1490' }
+      ]
     },
     {
       startYear: 1526,

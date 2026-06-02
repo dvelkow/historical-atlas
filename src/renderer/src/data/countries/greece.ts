@@ -20,9 +20,14 @@ const greece: Country = {
       summary: 'The Greek world was the cultural heart of the Eastern Roman (Byzantine) Empire — guardian of Orthodoxy and classical learning until 1453.',
       relations: [
         { to: 'russia', type: 'interaction', label: 'Christianised the Rus’', note: 'Byzantium brought Orthodoxy and Cyrillic to the East Slavs (988).' },
+        { to: 'italy', type: 'war', label: 'Reconquest & the Fourth Crusade', note: 'Justinian retook Italy; centuries later Venice diverted the Fourth Crusade to sack Constantinople (1204).' },
+        { to: 'france', type: 'war', label: 'Crusaders & the Latin Empire', note: 'Western crusaders seized Constantinople and carved out a Latin Empire (1204–61).' },
         { to: 'turkey', type: 'war', label: 'Ottoman conquest (1453)', note: 'The fall of Constantinople ended the Byzantine Empire.' }
       ],
-      figures: [{ name: 'Justinian I', title: 'Byzantine Emperor', years: 'r. 527–565' }]
+      figures: [
+        { name: 'Justinian I', title: 'Byzantine Emperor', years: 'r. 527–565' },
+        { name: 'Basil II', title: 'Emperor (the Bulgar-Slayer)', years: 'r. 976–1025' }
+      ]
     },
     {
       startYear: 1453,

@@ -18,9 +18,38 @@ const spain: Country = {
       religion: ['Roman polytheism', 'later Christianity'],
       culture: ['Hispano-Roman'],
       summary:
-        'A wealthy, thoroughly Romanised peninsula that gave Rome emperors such as Trajan and Hadrian before the Germanic migrations.',
-      relations: [],
-      figures: [{ name: 'Trajan', title: 'Roman Emperor (b. Hispania)', years: 'r. 98–117' }]
+        'A wealthy, thoroughly Romanised peninsula that gave Rome emperors such as Trajan and Hadrian, before Vandals, Suebi and Visigoths crossed the Pyrenees.',
+      relations: [
+        { to: 'italy', type: 'interaction', label: 'A favoured Roman province', note: 'Hispania gave Rome emperors (Trajan, Hadrian), olive oil and silver.' },
+        { to: 'germany', type: 'war', label: 'Germanic invasions', note: 'Vandals and Suebi overran the peninsula in the 5th century.' },
+        { to: 'france', type: 'interaction', label: 'Neighbour across the Pyrenees', note: 'Linked to Roman Gaul by road and trade.' }
+      ],
+      figures: [
+        { name: 'Trajan', title: 'Roman Emperor (b. Hispania)', years: 'r. 98–117' },
+        { name: 'Hadrian', title: 'Roman Emperor (b. Hispania)', years: 'r. 117–138' }
+      ]
+    },
+    {
+      startYear: 472,
+      endYear: 711,
+      eraId: 'early-medieval',
+      name: 'Visigothic Hispania',
+      modernEquivalent: false,
+      government: 'Germanic kingdom',
+      capital: 'Toledo',
+      religion: ['Arian then Catholic Christianity'],
+      culture: ['Visigothic', 'Hispano-Roman'],
+      summary:
+        'The Visigoths built a kingdom across Iberia from their capital at Toledo, converting from Arianism to Catholicism under Reccared (589) and nurturing scholars like Isidore of Seville — until the Umayyad invasion of 711 swept it away.',
+      relations: [
+        { to: 'france', type: 'war', label: 'Franks drive out the Goths', note: 'Clovis’s victory at Vouillé (507) pushed the Visigoths from Gaul into Iberia.' },
+        { to: 'italy', type: 'war', label: 'Byzantine Spania', note: 'Justinian’s Byzantines held a southern coastal province until c. 624.' },
+        { to: 'germany', type: 'interaction', label: 'A Germanic successor kingdom', note: 'One of the Arian Germanic realms born from Rome’s fall.' }
+      ],
+      figures: [
+        { name: 'Reccared I', title: 'King (converted to Catholicism)', years: 'r. 586–601' },
+        { name: 'Isidore of Seville', title: 'Scholar & archbishop', years: 'c. 560–636' }
+      ]
     },
     {
       startYear: 711,
@@ -34,7 +63,9 @@ const spain: Country = {
       summary:
         'Muslim Iberia (Al-Andalus) was a centre of learning while the Christian kingdoms pushed south in the centuries-long Reconquista, completed at Granada in 1492.',
       relations: [
-        { to: 'france', type: 'war', label: 'Battle of Tours (732)', note: 'The Umayyad advance into Francia was halted near Tours.' }
+        { to: 'france', type: 'war', label: 'Battle of Tours (732)', note: 'Charles Martel halted the Umayyad advance into Francia.' },
+        { to: 'portugal', type: 'war', label: 'The Reconquista', note: 'The Christian advance south birthed Portugal (Ourique, 1139) and pressed Al-Andalus.' },
+        { to: 'italy', type: 'interaction', label: 'The Mediterranean Muslim world', note: 'Ties of trade and learning across Sicily and the Maghreb.' }
       ],
       figures: [
         { name: 'Abd al-Rahman III', title: 'Caliph of Córdoba', years: 'r. 929–961' },

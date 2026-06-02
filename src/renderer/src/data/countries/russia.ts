@@ -16,11 +16,16 @@ const russia: Country = {
       capital: 'Kyiv',
       religion: ['Slavic paganism → Eastern Orthodoxy'],
       culture: ['East Slavic'],
-      summary: 'The first East Slavic state, Christianised from Byzantium in 988, ancestor of Russia, Ukraine, and Belarus, until the Mongol invasion.',
+      summary: 'The first East Slavic state — founded by Varangian Rus’, Christianised from Byzantium in 988, and ancestor of Russia, Ukraine and Belarus — flourished at Kyiv until the Mongol invasion of 1240.',
       relations: [
-        { to: 'greece', type: 'interaction', label: 'Christianisation from Byzantium', note: 'The Rus’ adopted Orthodox Christianity (988) and the Cyrillic script.' }
+        { to: 'greece', type: 'interaction', label: 'Christianisation from Byzantium', note: 'The Rus’ adopted Orthodox Christianity (988) and the Cyrillic script, trading with and raiding Constantinople.' },
+        { to: 'sweden', type: 'interaction', label: 'Varangian founders', note: 'Swedish Vikings (the Rus’) under Rurik established the ruling dynasty.' },
+        { to: 'poland', type: 'war', label: 'Wars with the Piasts', note: 'Border wars over the western Rus’ lands and Kyiv itself (1018).' }
       ],
-      figures: [{ name: 'Vladimir the Great', title: 'Grand Prince of Kyiv', years: 'r. 980–1015' }]
+      figures: [
+        { name: 'Vladimir the Great', title: 'Grand Prince of Kyiv', years: 'r. 980–1015' },
+        { name: 'Yaroslav the Wise', title: 'Grand Prince of Kyiv', years: 'r. 1019–1054' }
+      ]
     },
     {
       startYear: 1547,

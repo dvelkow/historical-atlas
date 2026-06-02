@@ -18,9 +18,38 @@ const italy: Country = {
       religion: ['Roman polytheism', 'later Christianity'],
       culture: ['Roman', 'Latin'],
       summary:
-        'The Italian peninsula was the heart of the Roman Empire and, after its fall in the West (476), the seat of the Papacy.',
-      relations: [],
-      figures: [{ name: 'Augustus', title: 'First Roman Emperor', years: 'r. 27 BCE – 14 CE' }]
+        'The Italian peninsula was the heart of the Roman Empire, ruling the Mediterranean world from the city of Rome until the Western Empire fell in 476.',
+      relations: [
+        { to: 'germany', type: 'war', label: 'Wars on the Rhine & Danube', note: 'Centuries of war with the Germanic peoples beyond the frontier.' },
+        { to: 'greece', type: 'interaction', label: 'The Greek East', note: 'The empire’s wealthy eastern, Greek-speaking half.' },
+        { to: 'france', type: 'interaction', label: 'The western provinces', note: 'Gaul, Hispania and Britannia were thoroughly Romanised.' }
+      ],
+      figures: [
+        { name: 'Augustus', title: 'First Roman Emperor', years: 'r. 27 BCE – 14 CE' },
+        { name: 'Constantine the Great', title: 'Roman Emperor', years: 'r. 306–337' }
+      ]
+    },
+    {
+      startYear: 476,
+      endYear: 1000,
+      eraId: 'early-medieval',
+      name: 'Ostrogothic, Byzantine & Lombard Italy',
+      modernEquivalent: false,
+      government: 'Gothic & Lombard kingdoms, Byzantine exarchate, Papacy',
+      capital: 'Ravenna / Pavia / Rome',
+      religion: ['Roman Catholicism', 'Arian Christianity'],
+      culture: ['Italian', 'Gothic', 'Lombard'],
+      summary:
+        'After Rome fell, Theodoric’s Ostrogoths ruled from Ravenna until Justinian’s long Gothic War wrecked Italy; the Lombards then seized the north, leaving a patchwork of Lombard duchies, the Byzantine exarchate, and a Papacy that turned to the Franks for protection.',
+      relations: [
+        { to: 'greece', type: 'war', label: 'Justinian’s Gothic War', note: 'Byzantium reconquered Italy (535–554) and held Ravenna for two centuries.' },
+        { to: 'france', type: 'war', label: 'Charlemagne crushes the Lombards', note: 'The Franks conquered the Lombard kingdom in 774 and protected the Pope.' },
+        { to: 'germany', type: 'interaction', label: 'Into the Empire', note: 'Imperial coronations in Rome bound Italy to the Frankish-German crown.' }
+      ],
+      figures: [
+        { name: 'Theodoric the Great', title: 'King of the Ostrogoths', years: 'r. 493–526' },
+        { name: 'Pope Gregory I', title: 'Pope (the Great)', years: 'r. 590–604' }
+      ]
     },
     {
       startYear: 1000,
@@ -34,10 +63,12 @@ const italy: Country = {
       summary:
         'Wealthy maritime and banking city-states — Venice, Florence, Genoa — and the Papacy made Italy the cradle of the Renaissance.',
       relations: [
-        { to: 'germany', type: 'war', label: 'Imperial interventions', note: 'Holy Roman Emperors repeatedly campaigned in Italy.' },
-        { to: 'turkey', type: 'war', label: 'Ottoman–Venetian Wars', note: 'Venice fought the Ottomans across the eastern Mediterranean.' }
+        { to: 'germany', type: 'war', label: 'Imperial interventions', note: 'Holy Roman Emperors and the Lombard League fought over northern Italy.' },
+        { to: 'greece', type: 'interaction', label: 'Maritime trade & the Crusades', note: 'Venice and Genoa dominated Byzantine trade; Venice diverted the Fourth Crusade onto Constantinople (1204).' },
+        { to: 'turkey', type: 'war', label: 'Ottoman–Venetian Wars', note: 'Venice fought the rising Ottomans across the eastern Mediterranean.' }
       ],
       figures: [
+        { name: 'Marco Polo', title: 'Venetian traveller', years: '1254–1324' },
         { name: 'Lorenzo de’ Medici', title: 'Ruler of Florence', years: '1449–1492' }
       ]
     },

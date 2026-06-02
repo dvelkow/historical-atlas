@@ -16,11 +16,16 @@ const poland: Country = {
       capital: 'Gniezno / Kraków',
       religion: ['Roman Catholicism'],
       culture: ['Polish'],
-      summary: 'Christianised in 966, the Piast kingdom consolidated the Polish lands and resisted the Holy Roman Empire and the Teutonic Knights.',
+      summary: 'Christianised under Mieszko I in 966, the Piast kingdom consolidated the Polish lands, survived the Mongol storm of 1241, and resisted the Holy Roman Empire and the Teutonic Knights.',
       relations: [
-        { to: 'germany', type: 'war', label: 'Wars with the Empire & Teutonic Order', note: 'Conflict over the Baltic and western frontier.' }
+        { to: 'germany', type: 'war', label: 'Wars with the Empire & Teutonic Order', note: 'Conflict over the Baltic and the western frontier.' },
+        { to: 'russia', type: 'war', label: 'Wars with Kievan Rus', note: 'Bolesław I intervened in Kyiv (1018) amid centuries of eastern rivalry.' },
+        { to: 'hungary', type: 'interaction', label: 'Dynastic ties', note: 'Shared kings and marriages linked the Piast and Árpád houses.' }
       ],
-      figures: [{ name: 'Casimir III the Great', title: 'King of Poland', years: 'r. 1333–1370' }]
+      figures: [
+        { name: 'Mieszko I', title: 'First Christian duke', years: 'r. c. 960–992' },
+        { name: 'Casimir III the Great', title: 'King of Poland', years: 'r. 1333–1370' }
+      ]
     },
     {
       startYear: 1569,

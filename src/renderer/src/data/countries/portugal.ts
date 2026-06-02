@@ -8,6 +8,27 @@ const portugal: Country = {
   centroid: [-8.2, 39.7],
   periods: [
     {
+      startYear: 868,
+      endYear: 1139,
+      eraId: 'early-medieval',
+      name: 'County of Portugal (Reconquista)',
+      government: 'County under León-Castile',
+      capital: 'Guimarães / Coimbra',
+      religion: ['Roman Catholicism'],
+      culture: ['Galician-Portuguese'],
+      summary:
+        'Reconquered from the Moors and ruled by counts under León-Castile, the Portucalense county on the Atlantic edge of Iberia grew autonomous under the Burgundian house — until Afonso Henriques won independence as Portugal’s first king (1139).',
+      relations: [
+        { to: 'spain', type: 'war', label: 'Reconquista & break from León', note: 'War on the Moors and a struggle for autonomy from León-Castile.' },
+        { to: 'france', type: 'interaction', label: 'The Burgundian counts', note: 'Henry of Burgundy’s dynasty came south of the Pyrenees to rule the county.' },
+        { to: 'united-kingdom', type: 'interaction', label: 'Crusaders on the coast', note: 'Northern crusaders sailing to the Holy Land aided the capture of Lisbon (1147).' }
+      ],
+      figures: [
+        { name: 'Vímara Peres', title: 'Count, founder of Portucale', years: 'd. 873' },
+        { name: 'Afonso I Henriques', title: 'First King of Portugal', years: 'r. 1139–1185' }
+      ]
+    },
+    {
       startYear: 1139,
       endYear: 1580,
       eraId: 'late-medieval',
@@ -19,9 +40,12 @@ const portugal: Country = {
       summary: 'The Atlantic pioneer of European expansion, whose navigators opened the sea routes to India and Brazil and built a global maritime empire.',
       relations: [
         { to: 'united-kingdom', type: 'ally', label: 'Anglo-Portuguese Alliance (1386)', note: 'The oldest alliance in the world still in force.' },
-        { to: 'spain', type: 'interaction', label: 'Iberian rivalry', note: 'Rivalry and dynastic union with Castile/Spain.' }
+        { to: 'spain', type: 'war', label: 'Battle of Aljubarrota (1385)', note: 'Portugal secured independence from Castile, with English archers’ help.' }
       ],
-      figures: [{ name: 'Henry the Navigator', title: 'Prince & patron of exploration', years: '1394–1460' }]
+      figures: [
+        { name: 'Henry the Navigator', title: 'Prince & patron of exploration', years: '1394–1460' },
+        { name: 'Vasco da Gama', title: 'Navigator to India', years: 'c. 1460–1524' }
+      ]
     },
     {
       startYear: 1640,

@@ -8,6 +8,50 @@ const turkey: Country = {
   centroid: [33.0, 39.2],
   periods: [
     {
+      startYear: 0,
+      endYear: 1071,
+      eraId: 'early-medieval',
+      name: 'Roman & Byzantine Anatolia',
+      modernEquivalent: false,
+      government: 'Roman / Byzantine provinces',
+      capital: 'Constantinople / Nicaea',
+      religion: ['Eastern Orthodox Christianity'],
+      culture: ['Greek', 'Anatolian'],
+      summary:
+        'For a thousand years Anatolia was the wealthy heartland of the Roman and then Byzantine Empire — until the Seljuk victory at Manzikert (1071) threw open the plateau to Turkic settlement.',
+      relations: [
+        { to: 'greece', type: 'interaction', label: 'Byzantine heartland', note: 'Anatolia and the Aegean formed the core of the Eastern Roman world.' },
+        { to: 'italy', type: 'war', label: 'Wars with Rome & the Latins', note: 'From the Gothic wars to the Fourth Crusade’s sack of Constantinople (1204).' },
+        { to: 'russia', type: 'interaction', label: 'Rus’ raids & trade', note: 'The Rus’ raided and traded with Constantinople along the Black Sea.' }
+      ],
+      figures: [
+        { name: 'Justinian I', title: 'Byzantine Emperor', years: 'r. 527–565' },
+        { name: 'Basil II', title: 'Byzantine Emperor', years: 'r. 976–1025' }
+      ]
+    },
+    {
+      startYear: 1077,
+      endYear: 1299,
+      eraId: 'high-medieval',
+      name: 'Seljuk Sultanate of Rum',
+      modernEquivalent: false,
+      government: 'Turkic sultanate',
+      capital: 'Konya',
+      religion: ['Sunni Islam'],
+      culture: ['Turkish', 'Persianate'],
+      summary:
+        'After Manzikert the Seljuk Turks settled Anatolia, and the Sultanate of Rum at Konya turned it into a Turkish-Muslim land — the cradle of what became Turkey — until the Mongols and rising beyliks broke it apart.',
+      relations: [
+        { to: 'greece', type: 'war', label: 'Wars with Byzantium', note: 'The Seljuks seized the Anatolian plateau from a reeling Byzantium.' },
+        { to: 'france', type: 'war', label: 'The Crusades pass through', note: 'Crusader armies fought across Seljuk Anatolia en route to Jerusalem.' },
+        { to: 'italy', type: 'interaction', label: 'Italian sea-trade', note: 'Venetian and Genoese merchants traded along the Anatolian coasts.' }
+      ],
+      figures: [
+        { name: 'Alp Arslan', title: 'Great Seljuk Sultan (Manzikert)', years: 'r. 1063–1072' },
+        { name: 'Kilij Arslan II', title: 'Sultan of Rum', years: 'r. 1156–1192' }
+      ]
+    },
+    {
       startYear: 1299,
       endYear: 1922,
       eraId: 'early-modern',

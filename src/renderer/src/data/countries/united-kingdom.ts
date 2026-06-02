@@ -18,9 +18,16 @@ const unitedKingdom: Country = {
       religion: ['Roman polytheism', 'later Christianity'],
       culture: ['Romano-British'],
       summary:
-        'Britain south of Hadrian’s Wall was a Roman province for nearly four centuries until the legions withdrew around 410.',
-      relations: [],
-      figures: [{ name: 'Boudica', title: 'Iceni queen (revolt)', years: 'd. c. 60/61' }]
+        'Britain south of Hadrian’s Wall was a Roman province for nearly four centuries — Londinium a thriving city — until the legions withdrew around 410.',
+      relations: [
+        { to: 'italy', type: 'interaction', label: 'A Roman province', note: 'Britannia was governed from Rome and garrisoned by the legions for ~360 years.' },
+        { to: 'germany', type: 'war', label: 'Saxon Shore raids', note: 'Coastal forts defended against Saxon and Frankish sea-raiders.' },
+        { to: 'france', type: 'interaction', label: 'Across the Channel from Gaul', note: 'Closely tied to Roman Gaul by trade and the army.' }
+      ],
+      figures: [
+        { name: 'Boudica', title: 'Iceni queen (revolt)', years: 'd. c. 60/61' },
+        { name: 'Hadrian', title: 'Emperor (built the Wall)', years: 'r. 117–138' }
+      ]
     },
     {
       startYear: 410,
@@ -32,11 +39,16 @@ const unitedKingdom: Country = {
       religion: ['Catholic Christianity'],
       culture: ['Anglo-Saxon'],
       summary:
-        'Anglo-Saxon kingdoms emerged after Rome, resisted Viking invasions under Alfred the Great, and were unified before the Norman Conquest of 1066.',
+        'Germanic Angles and Saxons settled the lowlands into rival kingdoms; Alfred the Great held off the Danes, his heirs unified England, and Cnut briefly ruled it within a North Sea empire — until the Norman Conquest of 1066.',
       relations: [
-        { to: 'denmark', type: 'war', label: 'Viking invasions', note: 'Danish raids and Cnut’s North Sea Empire.' }
+        { to: 'denmark', type: 'war', label: 'Viking invasions & Cnut’s empire', note: 'Danish raids, the Danelaw, and Cnut’s North Sea Empire.' },
+        { to: 'france', type: 'war', label: 'The Norman Conquest (1066)', note: 'Duke William of Normandy seized the throne at Hastings.' },
+        { to: 'germany', type: 'interaction', label: 'Continental Saxon roots', note: 'Anglo-Saxon missionaries like Boniface re-evangelised the German lands.' }
       ],
-      figures: [{ name: 'Alfred the Great', title: 'King of Wessex', years: 'r. 871–899' }]
+      figures: [
+        { name: 'Alfred the Great', title: 'King of Wessex', years: 'r. 871–899' },
+        { name: 'Cnut the Great', title: 'King of the North Sea Empire', years: 'r. 1016–1035' }
+      ]
     },
     {
       startYear: 1066,
@@ -50,7 +62,9 @@ const unitedKingdom: Country = {
       summary:
         'The Norman and Plantagenet kings ruled lands in France, were checked by Magna Carta (1215), and fought the Hundred Years’ War with France.',
       relations: [
-        { to: 'france', type: 'war', label: "Hundred Years' War", note: 'A long dynastic war over the French crown.' }
+        { to: 'france', type: 'war', label: "Hundred Years' War", note: 'A long dynastic war over the French crown and the Angevin lands in France.' },
+        { to: 'austria', type: 'interaction', label: 'Richard the Lionheart’s ransom', note: 'Returning from the Third Crusade, Richard I was captured and ransomed (1192–94).' },
+        { to: 'italy', type: 'interaction', label: 'Crusades & the Papacy', note: 'English kings crusaded east and clashed with Rome over Church and crown.' }
       ],
       figures: [
         { name: 'William the Conqueror', title: 'King of England', years: 'r. 1066–1087' },

@@ -19,9 +19,14 @@ const germany: Country = {
       summary:
         'The free Germanic tribes east of the Rhine resisted Roman conquest, annihilating three legions at the Teutoburg Forest (9 CE) and later spilling into the empire.',
       relations: [
-        { to: 'france', type: 'war', label: 'Rhine frontier wars', note: 'Endless skirmishing with Roman Gaul along the Rhine and Danube.' }
+        { to: 'italy', type: 'war', label: 'Teutoburg & the Marcomannic Wars', note: 'Germanic tribes destroyed three legions in 9 CE and later pressed the Roman frontier.' },
+        { to: 'france', type: 'war', label: 'Rhine frontier wars', note: 'Endless skirmishing with Roman Gaul along the Rhine and Danube.' },
+        { to: 'spain', type: 'interaction', label: 'The great migrations', note: 'Vandals and Suebi swept through Gaul into Roman Hispania.' }
       ],
-      figures: [{ name: 'Arminius', title: 'Cheruscan war leader', years: 'c. 18 BCE – 21 CE' }]
+      figures: [
+        { name: 'Arminius', title: 'Cheruscan war leader', years: 'c. 18 BCE – 21 CE' },
+        { name: 'Alaric I', title: 'Visigothic king (sacked Rome 410)', years: 'r. 395–410' }
+      ]
     },
     {
       startYear: 481,
@@ -35,9 +40,14 @@ const germany: Country = {
       summary:
         'Part of Charlemagne’s empire, the eastern Frankish lands split off at Verdun (843) and coalesced into the German kingdom under the Ottonians.',
       relations: [
-        { to: 'france', type: 'interaction', label: 'Treaty of Verdun (843)', note: 'The shared Carolingian inheritance divided East from West Francia.' }
+        { to: 'france', type: 'interaction', label: 'Treaty of Verdun (843)', note: 'The shared Carolingian inheritance divided East from West Francia.' },
+        { to: 'hungary', type: 'war', label: 'Battle of Lechfeld (955)', note: 'Otto I broke the Magyar raids, securing the German lands.' },
+        { to: 'italy', type: 'interaction', label: 'Revival of the Empire (962)', note: 'Otto I was crowned emperor in Rome, founding the Holy Roman Empire.' }
       ],
-      figures: [{ name: 'Otto I', title: 'King & Emperor', years: 'r. 936–973' }]
+      figures: [
+        { name: 'Henry the Fowler', title: 'First Saxon king', years: 'r. 919–936' },
+        { name: 'Otto I', title: 'King & Emperor', years: 'r. 936–973' }
+      ]
     },
     {
       startYear: 962,

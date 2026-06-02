@@ -18,11 +18,16 @@ const france: Country = {
       religion: ['Roman polytheism', 'later Christianity'],
       culture: ['Gallo-Roman'],
       summary:
-        'Conquered by Caesar, Gaul became a prosperous, thoroughly Romanised group of provinces until Germanic peoples overran the Rhine frontier.',
+        'Conquered by Caesar from the Gallic tribes, Gaul became a prosperous, thoroughly Romanised group of provinces until Germanic peoples overran the Rhine frontier.',
       relations: [
-        { to: 'germany', type: 'war', label: 'Rhine frontier wars', note: 'Centuries of conflict with the Germanic tribes across the Rhine.' }
+        { to: 'germany', type: 'war', label: 'Rhine frontier wars', note: 'Centuries of conflict with the Germanic tribes across the Rhine.' },
+        { to: 'italy', type: 'interaction', label: 'Heart of the Roman West', note: 'Gaul was one of Rome’s richest and most Romanised regions.' },
+        { to: 'united-kingdom', type: 'interaction', label: 'Gateway to Britannia', note: 'Gaul was the springboard for the Roman conquest and supply of Britain.' }
       ],
-      figures: [{ name: 'Saint Martin of Tours', title: 'Bishop & monk', years: 'c. 316–397' }]
+      figures: [
+        { name: 'Vercingetorix', title: 'Gallic chieftain vs. Caesar', years: 'd. 46 BCE' },
+        { name: 'Saint Martin of Tours', title: 'Bishop & monk', years: 'c. 316–397' }
+      ]
     },
     {
       startYear: 481,

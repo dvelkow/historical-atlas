@@ -16,12 +16,17 @@ const denmark: Country = {
       capital: 'Roskilde / Copenhagen',
       religion: ['Norse paganism → Catholicism'],
       culture: ['Danish', 'Norse'],
-      summary: 'A seafaring Norse kingdom whose Vikings raided and ruled in England, later uniting Scandinavia in the Kalmar Union (1397).',
+      summary: 'A seafaring Norse kingdom whose Vikings raided and ruled across the North Sea — in England, Frisia and Normandy — and which, Christianised under Harald Bluetooth, came to unite Scandinavia in the Kalmar Union (1397).',
       relations: [
-        { to: 'united-kingdom', type: 'war', label: 'Viking invasions of England', note: 'Danish raids and Cnut’s North Sea Empire.' },
+        { to: 'united-kingdom', type: 'war', label: 'Viking invasions of England', note: 'Danish raids, the Danelaw, and Cnut’s North Sea Empire.' },
+        { to: 'netherlands', type: 'war', label: 'Raids on Frisia & Dorestad', note: 'Danish fleets repeatedly sacked the Low Countries’ great emporium.' },
+        { to: 'germany', type: 'interaction', label: 'The southern frontier', note: 'The Danevirke and Holstein marked the border with the Saxons and the Empire.' },
         { to: 'sweden', type: 'interaction', label: 'Kalmar Union (1397)', note: 'A union of the Scandinavian crowns under Denmark.' }
       ],
-      figures: [{ name: 'Cnut the Great', title: 'King of the North Sea Empire', years: 'r. 1016–1035' }]
+      figures: [
+        { name: 'Harald Bluetooth', title: 'King who Christianised Denmark', years: 'r. c. 958–986' },
+        { name: 'Cnut the Great', title: 'King of the North Sea Empire', years: 'r. 1016–1035' }
+      ]
     },
     {
       startYear: 1523,
