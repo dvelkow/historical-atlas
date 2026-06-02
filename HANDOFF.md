@@ -57,6 +57,20 @@ country is *never* dropped (so the USSR's wrapped polygon in 1960 still renders)
 hit-test (`elementsFromPoint`) that Spain/UK/Germany are no longer occluded at 1700/1715, and
 that 1960/2010 still contain Russia.
 
+### ✅ DONE: missing modern nations — wave 1 (2026-06-02)
+
+Added 8 full entities so the modern map isn't half-dead context: **Norway, Ireland, Czechia,
+Serbia, Romania, Ukraine, Switzerland, Belgium** (each `countries/*.ts`, accurate periods,
+validated relations, placeholder leaders → see `FIGURES_NATIONS.md`). 24 entities total.
+Interactive polities at 2010 rose 19 → 28. Three wrong-neighbour aliases were **corrected** in
+`borderAliases.ts`: Norway off Denmark; Bohemia/Moravia/Czechs off Germany → Czechia;
+Galicia-Volhynia & Principality of Kyiv off Russia → Ukraine. (Kept "Volga Bulgars" and
+"Kievan Rus" → Russia.) Some entities are only clickable in eras where the dataset carries their
+polygon (e.g. no separate "Bohemia"/"Norway" shape in the high-medieval epochs — they sit inside
+the HRE/Scandinavia blobs); the period data is still reachable. **Remaining gap-#1 nations** to add
+next: Finland, the Baltics (Estonia/Latvia/Lithuania), Croatia, Slovakia, Slovenia, Bosnia,
+Moldova, Belarus, plus Greenland/Iceland.
+
 ### ✅ DONE: pre-1200 build-out (2026-06-02)
 
 The early timeline was sparse; it's now as dense as 1700–2025. Added early periods to
