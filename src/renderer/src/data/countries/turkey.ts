@@ -66,7 +66,8 @@ const turkey: Country = {
         { to: 'italy', type: 'war', label: 'Ottoman–Venetian Wars', note: 'Centuries of conflict with Venice for the eastern Mediterranean.' },
         { to: 'russia', type: 'war', label: 'Russo-Turkish Wars', note: 'A long contest over the Black Sea and Balkans.' },
         { to: 'france', type: 'ally', label: 'Franco-Ottoman alliance (1536)', note: 'A pragmatic entente against the Habsburgs.' },
-        { to: 'greece', type: 'war', label: 'Greek War of Independence', note: 'Greece won independence from Ottoman rule (1821–32).' }
+        { to: 'greece', type: 'war', label: 'Greek War of Independence', note: 'Greece won independence from Ottoman rule (1821–32).' },
+        { to: 'bulgaria', type: 'war', label: 'Bulgarian liberation (1878)', note: 'Five centuries of Ottoman rule in Bulgaria ended with the Russo-Turkish War.' }
       ],
       figures: [
         { name: 'Mehmed II', title: 'The Conqueror', years: 'r. 1451–1481' },

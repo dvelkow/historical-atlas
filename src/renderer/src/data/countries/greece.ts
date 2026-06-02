@@ -22,6 +22,7 @@ const greece: Country = {
         { to: 'russia', type: 'interaction', label: 'Christianised the Rus’', note: 'Byzantium brought Orthodoxy and Cyrillic to the East Slavs (988).' },
         { to: 'italy', type: 'war', label: 'Reconquest & the Fourth Crusade', note: 'Justinian retook Italy; centuries later Venice diverted the Fourth Crusade to sack Constantinople (1204).' },
         { to: 'france', type: 'war', label: 'Crusaders & the Latin Empire', note: 'Western crusaders seized Constantinople and carved out a Latin Empire (1204–61).' },
+        { to: 'bulgaria', type: 'war', label: 'Byzantine–Bulgarian wars', note: 'Centuries of war with the Bulgarian empires for mastery of the Balkans.' },
         { to: 'turkey', type: 'war', label: 'Ottoman conquest (1453)', note: 'The fall of Constantinople ended the Byzantine Empire.' }
       ],
       figures: [

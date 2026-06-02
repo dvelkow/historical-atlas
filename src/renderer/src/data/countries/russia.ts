@@ -57,6 +57,7 @@ const russia: Country = {
         { to: 'sweden', type: 'war', label: 'Great Northern War (1700–21)', note: 'Russia shattered Swedish supremacy in the Baltic.' },
         { to: 'france', type: 'war', label: 'Napoleonic & Crimean Wars', note: '1812 invasion repelled; later defeated in the Crimea.' },
         { to: 'turkey', type: 'war', label: 'Russo-Turkish Wars', note: 'A long contest over the Black Sea and the Balkans.' },
+        { to: 'bulgaria', type: 'ally', label: 'Liberation of Bulgaria (1878)', note: 'Pan-Slavic Russia freed Bulgaria from Ottoman rule in 1877–78.' },
         { to: 'france', type: 'ally', label: 'Franco-Russian Alliance (1894)', note: 'Aligned against Germany and Austria-Hungary.' },
         { to: 'germany', type: 'war', label: 'First World War', note: 'The Eastern Front until the 1917 revolution.' }
       ],

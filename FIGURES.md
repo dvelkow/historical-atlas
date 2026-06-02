@@ -8,7 +8,8 @@ selected country/period.
 - **Format:** PNG (RGBA), **one file per figure**, named by the slug rule below.
 - **Drop-in:** the app derives each figure's filename from its name automatically, so just
   add the PNG with the right name and it appears in place of the placeholder. No code edits.
-- There are **83 figures** to make (full list at the bottom).
+- There are **97 figures** to make (full list at the bottom). Bulgaria's 14 also have a
+  standalone brief in [`FIGURES_BULGARIA.md`](FIGURES_BULGARIA.md).
 
 ---
 
@@ -88,9 +89,25 @@ each file lights up its figure as soon as it's added.
 
 ---
 
-## 5. The full list — 83 files to make
+## 5. The full list — 97 files to make
 
 > `filename` — **Figure** · role (dates)
+
+### Bulgaria
+- `kubrat.png` — **Kubrat** · Khan of the Bulgars (r. c. 632–665)
+- `krum.png` — **Krum** · Khan, defeated Byzantium (r. c. 803–814)
+- `boris-i.png` — **Boris I** · Knyaz, Christianised Bulgaria (r. 852–889)
+- `simeon-i-the-great.png` — **Simeon I the Great** · Tsar, golden age (r. 893–927)
+- `peter-delyan.png` — **Peter Delyan** · Leader of the 1040 uprising (r. 1040–1041)
+- `kaloyan.png` — **Kaloyan** · Tsar, the Roman-Slayer (r. 1197–1207)
+- `ivan-asen-ii.png` — **Ivan Asen II** · Tsar, height of the empire (r. 1218–1241)
+- `paisius-of-hilendar.png` — **Paisius of Hilendar** · Monk of the National Revival (1722–1773)
+- `vasil-levski.png` — **Vasil Levski** · Revolutionary, the Apostle of Freedom (1837–1873)
+- `ferdinand-i.png` — **Ferdinand I** · Prince & Tsar of Bulgaria (r. 1887–1918)
+- `boris-iii.png` — **Boris III** · Tsar of Bulgaria (r. 1918–1943)
+- `georgi-dimitrov.png` — **Georgi Dimitrov** · Communist founder-leader (r. 1946–1949)
+- `todor-zhivkov.png` — **Todor Zhivkov** · Communist head of state (r. 1954–1989)
+- `zhelyu-zhelev.png` — **Zhelyu Zhelev** · First democratic President (r. 1990–1997)
 
 ### Austria
 - `marcus-aurelius.png` — **Marcus Aurelius** · Emperor (r. 161–180)

@@ -80,6 +80,13 @@ map('sweden', 'sweden', 'sweden–norway', 'swedes', 'swedes and goths', 'geats'
 // Denmark — incl. the Danes and the Kalmar Union
 map('denmark', 'denmark', 'denmark-norway', 'danes', 'kalmar union')
 
+// Bulgaria — the Balkan/Danube Bulgar state and its empires. NOTE: "Volga
+// Bulgars" is a different polity on the Volga and maps to Russia (see below).
+map('bulgaria',
+  'bulgaria', 'bulgars', 'bulgar khanate', 'first bulgarian empire',
+  'second bulgarian empire', 'tsardom of bulgaria', 'principality of bulgaria',
+  'danube bulgaria', 'old great bulgaria')
+
 // ---------------------------------------------------------------------------
 // Early-medieval polities (pre-1200): map each to the modern entity that best
 // represents the territory, so the early map is interactive too. (Big empires
