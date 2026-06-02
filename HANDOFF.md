@@ -57,6 +57,17 @@ country is *never* dropped (so the USSR's wrapped polygon in 1960 still renders)
 hit-test (`elementsFromPoint`) that Spain/UK/Germany are no longer occluded at 1700/1715, and
 that 1960/2010 still contain Russia.
 
+### ✅ DONE: filled the "dark age" timeline gaps (2026-06-02)
+
+No entity now has a silence >150 years — scrubbing the dial always shows a period, never
+"no recorded polity for X". Added 19 periods. Mid-life gaps: Russia 1240–1547 (Mongol Yoke &
+Grand Duchy of Moscow), Poland 1385–1569 (Jagiellonian), Sweden 1397–1611 (Kalmar/Vasa),
+Netherlands 1433–1568 (Burgundian/Habsburg), Romania 271–1330 (Migration era/Vlachs). Leading
+antiquity gaps filled back to year 0 for 15 entities (Roman provinces where applicable, else
+tribal/steppe context), all `modernEquivalent: false`. **Invariant to preserve:** a node check
+(see the commit) confirms zero >150y gaps and no overlaps across all 24 entities — re-run it if
+you add/edit periods. Small intentional gaps remain (e.g. France 1940–44 occupation) and are fine.
+
 ### ✅ DONE: missing modern nations — wave 1 (2026-06-02)
 
 Added 8 full entities so the modern map isn't half-dead context: **Norway, Ireland, Czechia,
