@@ -8,6 +8,24 @@ const poland: Country = {
   centroid: [19.4, 52.0],
   periods: [
     {
+      startYear: 0,
+      endYear: 966,
+      eraId: 'roman',
+      name: 'Early Slavic Tribes',
+      modernEquivalent: false,
+      government: 'Tribal societies',
+      capital: '— (no fixed centre)',
+      religion: ['Slavic paganism'],
+      culture: ['West Slavic', 'Lechitic'],
+      summary:
+        'The lands between the Oder and the Vistula passed from the Przeworsk culture and Germanic migrations to the West Slavic tribes, the Polans among them, who coalesced into the Piast realm baptised under Mieszko I in 966.',
+      relations: [
+        { to: 'germany', type: 'interaction', label: 'Germanic neighbours', note: 'Germanic peoples and later the Frankish-German world bordered the Slavic tribes.' },
+        { to: 'russia', type: 'interaction', label: 'Slavic kin', note: 'Part of the wider Slavic world stretching east toward the Rus’.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 966,
       endYear: 1385,
       eraId: 'high-medieval',
@@ -25,6 +43,28 @@ const poland: Country = {
       figures: [
         { name: 'Mieszko I', title: 'First Christian duke', years: 'r. c. 960–992' },
         { name: 'Casimir III the Great', title: 'King of Poland', years: 'r. 1333–1370' }
+      ]
+    },
+    {
+      startYear: 1385,
+      endYear: 1569,
+      eraId: 'late-medieval',
+      name: 'Jagiellonian Poland',
+      government: 'Kingdom (personal union with Lithuania)',
+      capital: 'Kraków',
+      religion: ['Roman Catholicism'],
+      culture: ['Polish', 'Lithuanian'],
+      summary:
+        'The 1385 Union of Krewo joined Poland and Lithuania under the Jagiellon dynasty; their combined armies crushed the Teutonic Knights at Grunwald (1410), ushering in a golden age that culminated in the 1569 Union of Lublin and the Commonwealth.',
+      relations: [
+        { to: 'germany', type: 'war', label: 'Grunwald & the Teutonic Order', note: 'The great victory of 1410 broke the Teutonic Knights’ power in the Baltic.' },
+        { to: 'russia', type: 'war', label: 'Wars with Muscovy', note: 'Poland-Lithuania and rising Moscow fought over the Ruthenian lands.' },
+        { to: 'hungary', type: 'interaction', label: 'Shared Jagiellon crowns', note: 'Jagiellon kings also wore the crowns of Hungary and Bohemia.' },
+        { to: 'turkey', type: 'war', label: 'The Ottoman threat', note: 'King Władysław fell fighting the Ottomans at Varna in 1444.' }
+      ],
+      figures: [
+        { name: 'Władysław II Jagiełło', title: 'King (victor at Grunwald)', years: 'r. 1386–1434' },
+        { name: 'Casimir IV Jagiellon', title: 'King of Poland', years: 'r. 1447–1492' }
       ]
     },
     {

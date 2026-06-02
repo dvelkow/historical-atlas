@@ -8,6 +8,24 @@ const norway: Country = {
   centroid: [9, 61],
   periods: [
     {
+      startYear: 0,
+      endYear: 793,
+      eraId: 'roman',
+      name: 'Nordic Iron Age',
+      modernEquivalent: false,
+      government: 'Petty chieftaincies',
+      capital: '— (no fixed centre)',
+      religion: ['Norse paganism'],
+      culture: ['Norse'],
+      summary:
+        'Along the fjords, Iron Age chieftains built petty kingdoms and seafaring traditions — trading furs and iron and raising the great ship-burials — in the centuries before the Viking raids burst onto Europe in 793.',
+      relations: [
+        { to: 'denmark', type: 'interaction', label: 'The Norse world', note: 'A shared Scandinavian culture developed across Norway, Denmark and Sweden.' },
+        { to: 'sweden', type: 'interaction', label: 'Scandinavian kin', note: 'Closely tied to the Svear and Götar across the Keel mountains.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 793,
       endYear: 1066,
       eraId: 'early-medieval',

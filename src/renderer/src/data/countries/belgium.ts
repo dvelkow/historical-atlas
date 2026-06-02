@@ -8,6 +8,48 @@ const belgium: Country = {
   centroid: [4.5, 50.6],
   periods: [
     {
+      startYear: 0,
+      endYear: 476,
+      eraId: 'roman',
+      name: 'Roman Gallia Belgica',
+      modernEquivalent: false,
+      government: 'Roman province',
+      capital: 'Durocortorum (Reims) / Tongeren',
+      religion: ['Celtic & Roman paganism'],
+      culture: ['Belgic Gaul', 'Roman'],
+      summary:
+        'Caesar called the Belgae the bravest of the Gauls; their lands became the Roman province of Gallia Belgica, a prosperous frontier region until the Franks crossed the Rhine as Roman power collapsed.',
+      relations: [
+        { to: 'italy', type: 'war', label: 'Caesar’s conquest of the Belgae', note: 'Ambiorix wiped out a Roman legion before Caesar subdued the Belgic tribes.' },
+        { to: 'france', type: 'interaction', label: 'Part of Roman Gaul', note: 'Gallia Belgica was one of the great provinces of Roman Gaul.' }
+      ],
+      figures: [
+        { name: 'Ambiorix', title: 'Eburones chieftain vs. Caesar', years: 'fl. 54 BCE' }
+      ]
+    },
+    {
+      startYear: 476,
+      endYear: 1384,
+      eraId: 'early-medieval',
+      name: 'Frankish Heartland & Medieval Principalities',
+      modernEquivalent: false,
+      government: 'Frankish core, then feudal counties & duchies',
+      capital: 'Liège / Bruges',
+      religion: ['Roman Catholicism'],
+      culture: ['Flemish', 'Walloon', 'Frankish'],
+      summary:
+        'The region was the cradle of the Frankish kings and Charlemagne’s dynasty; after the empire split it fragmented into the wealthy county of Flanders, the duchy of Brabant and the prince-bishopric of Liège, straddling the French and German realms.',
+      relations: [
+        { to: 'france', type: 'war', label: 'Flanders, a turbulent French fief', note: 'The rich Flemish towns repeatedly defied the French crown — the Golden Spurs (1302).' },
+        { to: 'germany', type: 'interaction', label: 'Lower Lotharingia in the Empire', note: 'Brabant and Liège lay within the Holy Roman Empire.' },
+        { to: 'netherlands', type: 'interaction', label: 'The shared Low Countries', note: 'Bound to the northern provinces by trade, language and the cloth economy.' }
+      ],
+      figures: [
+        { name: 'Godfrey of Bouillon', title: 'Leader of the First Crusade', years: 'c. 1060–1100' },
+        { name: 'Jacob van Artevelde', title: 'Ghent statesman', years: 'c. 1290–1345' }
+      ]
+    },
+    {
       startYear: 1384,
       endYear: 1714,
       eraId: 'late-medieval',

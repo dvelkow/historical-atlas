@@ -8,6 +8,26 @@ const serbia: Country = {
   centroid: [20.8, 44],
   periods: [
     {
+      startYear: 0,
+      endYear: 780,
+      eraId: 'roman',
+      name: 'Roman Illyricum & the Slav Settlement',
+      modernEquivalent: false,
+      government: 'Roman provinces, then Slavic tribes',
+      capital: 'Naissus (Niš) / Sirmium',
+      religion: ['Roman paganism → Christianity'],
+      culture: ['Illyrian', 'Roman', 'Slavic'],
+      summary:
+        'The central Balkans were Rome’s provinces of Moesia and Dalmatia — birthplace of emperors like Constantine the Great at Naissus — until, after Avar raids shattered Byzantine control, Slavic tribes settled the land in the 7th century.',
+      relations: [
+        { to: 'italy', type: 'interaction', label: 'Roman Illyricum', note: 'A Roman heartland that gave the empire several soldier-emperors.' },
+        { to: 'greece', type: 'war', label: 'Avars, Slavs & Byzantium', note: 'Slavic and Avar incursions overran the Byzantine Balkan provinces.' }
+      ],
+      figures: [
+        { name: 'Constantine the Great', title: 'Roman Emperor (born at Naissus)', years: 'r. 306–337' }
+      ]
+    },
+    {
       startYear: 780,
       endYear: 1217,
       eraId: 'early-medieval',

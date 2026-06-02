@@ -8,6 +8,26 @@ const czechia: Country = {
   centroid: [15.4, 49.8],
   periods: [
     {
+      startYear: 0,
+      endYear: 833,
+      eraId: 'roman',
+      name: 'Celtic Boii & Germanic Marcomanni',
+      modernEquivalent: false,
+      government: 'Tribal kingdoms',
+      capital: '— (no fixed centre)',
+      religion: ['Celtic & Germanic paganism'],
+      culture: ['Celtic', 'Germanic', 'early Slavic'],
+      summary:
+        'The Celtic Boii gave Bohemia its name before the Germanic Marcomanni under Maroboduus built a kingdom that defied Rome; as they migrated away, Slavic settlers moved in to form the realm that became Great Moravia.',
+      relations: [
+        { to: 'italy', type: 'war', label: 'The Marcomannic Wars', note: 'Marcus Aurelius fought the Marcomanni of Bohemia along the Danube.' },
+        { to: 'germany', type: 'interaction', label: 'Germanic neighbours', note: 'The Marcomanni were one of the great Germanic peoples on Rome’s frontier.' }
+      ],
+      figures: [
+        { name: 'Maroboduus', title: 'King of the Marcomanni', years: 'r. c. 9 BCE – 18 CE' }
+      ]
+    },
+    {
       startYear: 833,
       endYear: 907,
       eraId: 'early-medieval',

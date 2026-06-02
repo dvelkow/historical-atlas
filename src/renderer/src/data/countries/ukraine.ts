@@ -8,6 +8,24 @@ const ukraine: Country = {
   centroid: [31, 49],
   periods: [
     {
+      startYear: 0,
+      endYear: 882,
+      eraId: 'roman',
+      name: 'Scythia & the Pontic Steppe',
+      modernEquivalent: false,
+      government: 'Nomadic peoples & Greek colonies',
+      capital: '— (no fixed centre)',
+      religion: ['Paganism'],
+      culture: ['Scythian', 'Sarmatian', 'Gothic', 'Slavic'],
+      summary:
+        'The black-earth steppe north of the Black Sea was the realm of Scythian and Sarmatian horsemen and Greek trading colonies; Goths, Huns and Avars swept through before the East Slavs settled the Dnipro that the Rus’ would organise from Kyiv.',
+      relations: [
+        { to: 'greece', type: 'interaction', label: 'Greek Black Sea colonies', note: 'Cities like Olbia and Chersonesus traded grain with the steppe nomads.' },
+        { to: 'italy', type: 'war', label: 'Goths & Huns vs. Rome', note: 'The peoples of the steppe pressed west against the Roman frontier.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 882,
       endYear: 1349,
       eraId: 'early-medieval',

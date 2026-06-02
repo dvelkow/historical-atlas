@@ -8,6 +8,24 @@ const ireland: Country = {
   centroid: [-8, 53.2],
   periods: [
     {
+      startYear: 0,
+      endYear: 400,
+      eraId: 'roman',
+      name: 'Prehistoric & Celtic Ireland',
+      modernEquivalent: false,
+      government: 'Gaelic tribal kingdoms (túatha)',
+      capital: 'Tara (ceremonial seat)',
+      religion: ['Celtic paganism (druidism)'],
+      culture: ['Gaelic', 'La Tène Celtic'],
+      summary:
+        'Beyond the reach of Rome, Iron Age Ireland was a patchwork of Gaelic túatha sharing a common Celtic culture, law and language — the world of the legendary High Kings at Tara, on the eve of Saint Patrick’s mission.',
+      relations: [
+        { to: 'united-kingdom', type: 'interaction', label: 'Raids on Roman Britain', note: 'Irish raiders struck the western coasts of Roman Britain and carried off captives.' },
+        { to: 'france', type: 'interaction', label: 'Celtic kin', note: 'Part of the wider Atlantic Celtic world linked to Gaul and Britain.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 400,
       endYear: 1169,
       eraId: 'early-medieval',

@@ -8,6 +8,44 @@ const portugal: Country = {
   centroid: [-8.2, 39.7],
   periods: [
     {
+      startYear: 0,
+      endYear: 409,
+      eraId: 'roman',
+      name: 'Roman Lusitania',
+      modernEquivalent: false,
+      government: 'Roman province',
+      capital: 'Emerita Augusta (Mérida)',
+      religion: ['Roman paganism → Christianity'],
+      culture: ['Lusitanian', 'Hispano-Roman'],
+      summary:
+        'West of the Iberian peninsula, the province of Lusitania was thoroughly Romanised — its towns, roads and villas prospering for four centuries until the Germanic crossings of 409 ended Roman rule.',
+      relations: [
+        { to: 'italy', type: 'interaction', label: 'A Roman province', note: 'Lusitania was one of the wealthy provinces of Roman Hispania.' },
+        { to: 'spain', type: 'interaction', label: 'Shared Iberia', note: 'Part of the Roman Iberian world alongside the rest of Hispania.' }
+      ],
+      figures: []
+    },
+    {
+      startYear: 409,
+      endYear: 868,
+      eraId: 'late-antique',
+      name: 'Suebi, Visigoths & al-Andalus',
+      modernEquivalent: false,
+      government: 'Germanic kingdoms, then Muslim rule',
+      capital: 'Bracara (Braga) / Coimbra',
+      religion: ['Arian & Catholic Christianity', 'Islam (from 711)'],
+      culture: ['Suebi', 'Visigothic', 'Andalusi'],
+      summary:
+        'The Suebi built a kingdom in the northwest, absorbed by the Visigoths, until the Umayyad conquest of 711 brought the west under al-Andalus as Gharb — until Christian reconquest crept south to form the county of Portugal.',
+      relations: [
+        { to: 'spain', type: 'war', label: 'Iberian kingdoms & the Reconquista', note: 'Shared the fate of Visigothic Hispania and the Muslim conquest, then the Christian reconquest.' },
+        { to: 'france', type: 'interaction', label: 'Frankish frontier', note: 'The Carolingians pushed the Christian frontier south of the Pyrenees.' }
+      ],
+      figures: [
+        { name: 'Hermeric', title: 'First king of the Suebi', years: 'r. 409–438' }
+      ]
+    },
+    {
       startYear: 868,
       endYear: 1139,
       eraId: 'early-medieval',

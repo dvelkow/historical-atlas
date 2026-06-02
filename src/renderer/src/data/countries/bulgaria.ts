@@ -8,6 +8,26 @@ const bulgaria: Country = {
   centroid: [25.3, 42.7],
   periods: [
     {
+      startYear: 0,
+      endYear: 632,
+      eraId: 'roman',
+      name: 'Roman & Early Byzantine Thrace',
+      modernEquivalent: false,
+      government: 'Roman / Byzantine provinces',
+      capital: 'Serdica (Sofia) / Philippopolis',
+      religion: ['Thracian & Roman paganism → Christianity'],
+      culture: ['Thracian', 'Roman', 'Greek'],
+      summary:
+        'The lands of the warlike Thracians became the Roman provinces of Thrace and Moesia, dotted with cities like Serdica and Philippopolis, and remained a Byzantine frontier until the Bulgars crossed the Danube to stay.',
+      relations: [
+        { to: 'italy', type: 'interaction', label: 'Roman provinces', note: 'Thrace and Moesia were long-held provinces guarding the lower Danube.' },
+        { to: 'greece', type: 'interaction', label: 'Byzantine frontier', note: 'The region was a core part of the Eastern Roman world.' }
+      ],
+      figures: [
+        { name: 'Spartacus', title: 'Thracian gladiator & rebel', years: 'd. 71 BCE' }
+      ]
+    },
+    {
       startYear: 632,
       endYear: 681,
       eraId: 'early-medieval',

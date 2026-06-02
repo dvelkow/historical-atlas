@@ -8,6 +8,24 @@ const denmark: Country = {
   centroid: [9.5, 56.0],
   periods: [
     {
+      startYear: 0,
+      endYear: 793,
+      eraId: 'roman',
+      name: 'Nordic Iron Age',
+      modernEquivalent: false,
+      government: 'Tribal chieftaincies',
+      capital: '— (no fixed centre)',
+      religion: ['Norse paganism'],
+      culture: ['Germanic', 'Norse'],
+      summary:
+        'The Jutland peninsula and Danish isles were home to Germanic tribes — among them the Angles and Jutes who sailed to Britain — whose chieftains traded with Rome and laid the cultural ground for the Viking age.',
+      relations: [
+        { to: 'united-kingdom', type: 'interaction', label: 'Angles & Jutes to Britain', note: 'Peoples from the Danish lands migrated to settle post-Roman Britain.' },
+        { to: 'italy', type: 'interaction', label: 'Amber trade with Rome', note: 'Baltic amber flowed south to the Roman world along old trade routes.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 793,
       endYear: 1397,
       eraId: 'early-medieval',

@@ -8,6 +8,24 @@ const russia: Country = {
   centroid: [37.6, 55.7],
   periods: [
     {
+      startYear: 0,
+      endYear: 882,
+      eraId: 'roman',
+      name: 'Scythians, Sarmatians & the Early Slavs',
+      modernEquivalent: false,
+      government: 'Nomadic and tribal peoples',
+      capital: '— (no fixed centre)',
+      religion: ['Paganism'],
+      culture: ['Sarmatian', 'Gothic', 'Slavic'],
+      summary:
+        'The forests and steppes of the east saw Sarmatian nomads, Gothic and Hunnic migrations, and the slow spread of the East Slavic tribes — the world the Varangian Rus’ would forge into a state from 882.',
+      relations: [
+        { to: 'greece', type: 'interaction', label: 'Trade with the Greek colonies', note: 'Greek Black Sea colonies traded grain and goods with the steppe peoples.' },
+        { to: 'italy', type: 'war', label: 'Migrations against Rome', note: 'Goths and Huns of these lands pressed hard on the Roman frontier.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 882,
       endYear: 1240,
       eraId: 'early-medieval',
@@ -25,6 +43,28 @@ const russia: Country = {
       figures: [
         { name: 'Vladimir the Great', title: 'Grand Prince of Kyiv', years: 'r. 980–1015' },
         { name: 'Yaroslav the Wise', title: 'Grand Prince of Kyiv', years: 'r. 1019–1054' }
+      ]
+    },
+    {
+      startYear: 1240,
+      endYear: 1547,
+      eraId: 'high-medieval',
+      name: 'The Mongol Yoke & Grand Duchy of Moscow',
+      modernEquivalent: false,
+      government: 'Rus’ principalities under the Golden Horde',
+      capital: 'Vladimir → Moscow',
+      religion: ['Eastern Orthodoxy'],
+      culture: ['Russian'],
+      summary:
+        'After the Mongols sacked Kyiv in 1240 the Rus’ princes paid tribute to the Golden Horde; Moscow slowly rose, Dmitry Donskoy won at Kulikovo (1380), and Ivan III threw off the yoke in 1480 and gathered the Russian lands — until Ivan IV took the title of Tsar in 1547.',
+      relations: [
+        { to: 'poland', type: 'war', label: 'Lithuanian–Muscovite wars', note: 'Moscow and Lithuania (soon joined to Poland) contested the old Rus’ lands.' },
+        { to: 'greece', type: 'interaction', label: 'The Third Rome', note: 'After Constantinople fell in 1453, Moscow claimed the mantle of Orthodox empire.' },
+        { to: 'sweden', type: 'war', label: 'Novgorod’s northern wars', note: 'Novgorod and then Moscow fought Sweden over Karelia and the Baltic.' }
+      ],
+      figures: [
+        { name: 'Alexander Nevsky', title: 'Prince of Novgorod', years: 'r. 1236–1263' },
+        { name: 'Ivan III the Great', title: 'Grand Prince of Moscow', years: 'r. 1462–1505' }
       ]
     },
     {

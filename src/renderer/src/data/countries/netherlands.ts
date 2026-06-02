@@ -8,6 +8,26 @@ const netherlands: Country = {
   centroid: [5.4, 52.2],
   periods: [
     {
+      startYear: 0,
+      endYear: 690,
+      eraId: 'roman',
+      name: 'Roman Batavia & Germania Inferior',
+      modernEquivalent: false,
+      government: 'Roman province & frontier tribes',
+      capital: 'Noviomagus (Nijmegen)',
+      religion: ['Germanic & Roman paganism'],
+      culture: ['Batavian', 'Frisian', 'Roman'],
+      summary:
+        'The Rhine delta marked Rome’s northern frontier: the Batavi served as crack auxiliaries and rose in the great revolt of 69 CE, while beyond the limes the Frisians and Franks pressed in as Roman power faded.',
+      relations: [
+        { to: 'italy', type: 'war', label: 'The Batavian Revolt (69 CE)', note: 'Civilis led the Batavi in a fierce rising against Rome on the Rhine frontier.' },
+        { to: 'germany', type: 'interaction', label: 'The Germanic frontier', note: 'The lower Rhine separated Roman territory from the free Germanic tribes.' }
+      ],
+      figures: [
+        { name: 'Gaius Julius Civilis', title: 'Leader of the Batavian Revolt', years: 'fl. 69–70 CE' }
+      ]
+    },
+    {
       startYear: 690,
       endYear: 1100,
       eraId: 'early-medieval',
@@ -47,6 +67,28 @@ const netherlands: Country = {
       figures: [
         { name: 'Floris V', title: 'Count of Holland', years: 'r. 1256–1296' },
         { name: 'Jacob van Artevelde', title: 'Ghent statesman', years: 'c. 1290–1345' }
+      ]
+    },
+    {
+      startYear: 1433,
+      endYear: 1568,
+      eraId: 'late-medieval',
+      name: 'Burgundian & Habsburg Netherlands',
+      modernEquivalent: false,
+      government: 'Burgundian then Habsburg dynastic union',
+      capital: 'Brussels / Mechelen',
+      religion: ['Roman Catholicism'],
+      culture: ['Dutch', 'Flemish', 'Burgundian'],
+      summary:
+        'The Dukes of Burgundy gathered the seventeen provinces of the Low Countries into one rich realm; it passed to the Habsburgs and Charles V, whose son Philip II’s rule provoked the revolt that began in 1568.',
+      relations: [
+        { to: 'france', type: 'war', label: 'Burgundy vs. France', note: 'The Valois dukes of Burgundy long contested power with the French crown.' },
+        { to: 'spain', type: 'interaction', label: 'Into the Habsburg empire', note: 'The provinces passed through Charles V to Habsburg Spain.' },
+        { to: 'austria', type: 'interaction', label: 'Habsburg inheritance', note: 'Mary of Burgundy’s marriage brought the Low Countries to the Austrian Habsburgs.' }
+      ],
+      figures: [
+        { name: 'Philip the Good', title: 'Duke of Burgundy', years: 'r. 1419–1467' },
+        { name: 'Charles V', title: 'Holy Roman Emperor (born in Ghent)', years: 'r. 1519–1556' }
       ]
     },
     {

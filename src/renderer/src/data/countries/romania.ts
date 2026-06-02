@@ -29,6 +29,27 @@ const romania: Country = {
       ]
     },
     {
+      startYear: 271,
+      endYear: 1330,
+      eraId: 'late-antique',
+      name: 'Migration Era & the Vlachs',
+      modernEquivalent: false,
+      government: 'Migrating peoples; no settled state',
+      capital: '— (none)',
+      religion: ['Paganism → Orthodox Christianity'],
+      culture: ['Daco-Roman (Vlach)', 'Slavic'],
+      summary:
+        'After Rome withdrew, waves of Goths, Huns, Gepids, Avars, Slavs, Bulgars and finally Magyars and Cumans swept the Carpathians and lower Danube; through it all the Romanised Vlachs endured, emerging as the principalities of Wallachia and Moldavia in the 14th century.',
+      relations: [
+        { to: 'hungary', type: 'war', label: 'Magyars in Transylvania', note: 'The Hungarian crown absorbed Transylvania, ruling over its Romanian population.' },
+        { to: 'bulgaria', type: 'interaction', label: 'Bulgarian Danube', note: 'The First and Second Bulgarian Empires long held the lands south of the Danube.' },
+        { to: 'greece', type: 'interaction', label: 'Byzantine orbit', note: 'Orthodox Christianity and Byzantine culture shaped the emerging Vlach society.' }
+      ],
+      figures: [
+        { name: 'Gelou', title: 'Vlach voivode of Transylvania (semi-legendary)', years: 'fl. c. 900' }
+      ]
+    },
+    {
       startYear: 1330,
       endYear: 1600,
       eraId: 'late-medieval',

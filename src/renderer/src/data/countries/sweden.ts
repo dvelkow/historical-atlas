@@ -8,6 +8,24 @@ const sweden: Country = {
   centroid: [15.5, 60.2],
   periods: [
     {
+      startYear: 0,
+      endYear: 800,
+      eraId: 'roman',
+      name: 'Nordic Iron Age & the Vendel Period',
+      modernEquivalent: false,
+      government: 'Tribal chieftaincies',
+      capital: 'Old Uppsala',
+      religion: ['Norse paganism'],
+      culture: ['Norse', 'Geatish', 'Swedish'],
+      summary:
+        'Before the Vikings, the Svear and Götar of the Mälaren region built rich chieftaincies — the boat-grave splendour of Vendel and Valsgärde — trading amber and furs south to the Roman world and the continent.',
+      relations: [
+        { to: 'denmark', type: 'interaction', label: 'The Norse world', note: 'Shared the developing Scandinavian culture with the Danes and Norwegians.' },
+        { to: 'italy', type: 'interaction', label: 'Trade with Rome', note: 'Amber and furs flowed south in exchange for Roman silver and glass.' }
+      ],
+      figures: []
+    },
+    {
       startYear: 800,
       endYear: 1100,
       eraId: 'early-medieval',
@@ -47,6 +65,28 @@ const sweden: Country = {
       figures: [
         { name: 'Birger Jarl', title: 'Regent & founder of Stockholm', years: 'c. 1210–1266' },
         { name: 'Saint Eric (Erik IX)', title: 'King & crusader', years: 'r. 1156–1160' }
+      ]
+    },
+    {
+      startYear: 1397,
+      endYear: 1611,
+      eraId: 'late-medieval',
+      name: 'Kalmar Union & the Vasa Founding',
+      modernEquivalent: false,
+      government: 'Union under Denmark → independent Vasa kingdom',
+      capital: 'Stockholm',
+      religion: ['Roman Catholicism → Lutheranism'],
+      culture: ['Swedish'],
+      summary:
+        'Bound into the Danish-led Kalmar Union from 1397, Sweden chafed and rebelled until Gustav Vasa’s revolt won independence in 1523, founding the Vasa monarchy and bringing the Reformation that set the stage for the coming empire.',
+      relations: [
+        { to: 'denmark', type: 'war', label: 'Kalmar Union & the break of 1523', note: 'Resentment of Danish dominance, the Stockholm Bloodbath, and Gustav Vasa’s war of independence.' },
+        { to: 'russia', type: 'war', label: 'Baltic wars', note: 'Rivalry with Russia over Finland, Karelia and Livonia.' },
+        { to: 'poland', type: 'interaction', label: 'The Vasa dynastic union', note: 'Sigismund III briefly ruled both Sweden and Poland before the Swedish throne broke away.' }
+      ],
+      figures: [
+        { name: 'Engelbrekt Engelbrektsson', title: 'Rebel against the union', years: 'c. 1390–1436' },
+        { name: 'Gustav Vasa', title: 'Founder of independent Sweden', years: 'r. 1523–1560' }
       ]
     },
     {

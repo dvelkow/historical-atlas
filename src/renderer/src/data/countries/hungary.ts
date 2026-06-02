@@ -8,6 +8,26 @@ const hungary: Country = {
   centroid: [19.4, 47.2],
   periods: [
     {
+      startYear: 0,
+      endYear: 568,
+      eraId: 'roman',
+      name: 'Roman Pannonia',
+      modernEquivalent: false,
+      government: 'Roman province, then migration-era kingdoms',
+      capital: 'Aquincum (Budapest) / Sirmium',
+      religion: ['Roman paganism → Christianity'],
+      culture: ['Pannonian', 'Roman', 'Hunnic'],
+      summary:
+        'The Danube basin was the Roman province of Pannonia, a vital military frontier; after Rome it became the heartland of Attila’s Hunnic empire and a corridor for Goths and Gepids before the Avars arrived.',
+      relations: [
+        { to: 'italy', type: 'war', label: 'Huns & Rome', note: 'Attila ruled the Pannonian plain and invaded Italy in 452.' },
+        { to: 'austria', type: 'interaction', label: 'Neighbouring Noricum', note: 'Pannonia bordered the Roman Danube province of Noricum to the west.' }
+      ],
+      figures: [
+        { name: 'Attila', title: 'King of the Huns', years: 'r. 434–453' }
+      ]
+    },
+    {
       startYear: 568,
       endYear: 1000,
       eraId: 'early-medieval',

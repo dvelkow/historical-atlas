@@ -8,6 +8,47 @@ const switzerland: Country = {
   centroid: [8.2, 46.8],
   periods: [
     {
+      startYear: 0,
+      endYear: 476,
+      eraId: 'roman',
+      name: 'Roman Helvetia & Raetia',
+      modernEquivalent: false,
+      government: 'Roman provinces',
+      capital: 'Aventicum (Avenches)',
+      religion: ['Celtic & Roman paganism'],
+      culture: ['Helvetii', 'Raeti', 'Roman'],
+      summary:
+        'The Celtic Helvetii were turned back by Caesar in 58 BCE and their Alpine lands organised into Roman Helvetia and Raetia — crossed by vital trans-Alpine roads — until the Alemanni and Burgundians settled them as Rome fell.',
+      relations: [
+        { to: 'italy', type: 'war', label: 'Caesar halts the Helvetii', note: 'Caesar defeated the migrating Helvetii at Bibracte in 58 BCE and made the land Roman.' },
+        { to: 'france', type: 'interaction', label: 'Roman Gaul', note: 'Helvetia formed part of the Roman Gallic provinces.' }
+      ],
+      figures: [
+        { name: 'Divico', title: 'Helvetii leader vs. Rome', years: 'fl. 1st century BCE' }
+      ]
+    },
+    {
+      startYear: 476,
+      endYear: 1291,
+      eraId: 'early-medieval',
+      name: 'Alemannic & Burgundian Lands',
+      modernEquivalent: false,
+      government: 'Germanic kingdoms within the Frankish realm & Empire',
+      capital: '— (Sankt Gallen, Zürich)',
+      religion: ['Christianity'],
+      culture: ['Alemannic', 'Burgundian', 'Romansh'],
+      summary:
+        'Settled by the Alemanni in the north and Burgundians in the west, the Alpine lands were Christianised by Irish monks like Saint Gall, absorbed into the Frankish realm and then the Holy Roman Empire — the patchwork from which the Confederacy would spring in 1291.',
+      relations: [
+        { to: 'germany', type: 'interaction', label: 'Within the Empire', note: 'The Alpine lands lay inside East Francia and the Holy Roman Empire.' },
+        { to: 'france', type: 'interaction', label: 'Burgundian west', note: 'The western, French-speaking lands belonged to the kingdom of Burgundy.' },
+        { to: 'ireland', type: 'interaction', label: 'Irish missionaries', note: 'Saint Gall and other Irish monks founded the great Alpine monasteries.' }
+      ],
+      figures: [
+        { name: 'Saint Gall', title: 'Irish monk, founder of St Gallen', years: 'c. 550–646' }
+      ]
+    },
+    {
       startYear: 1291,
       endYear: 1798,
       eraId: 'high-medieval',
