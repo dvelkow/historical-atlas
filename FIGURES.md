@@ -8,8 +8,9 @@ selected country/period.
 - **Format:** PNG (RGBA), **one file per figure**, named by the slug rule below.
 - **Drop-in:** the app derives each figure's filename from its name automatically, so just
   add the PNG with the right name and it appears in place of the placeholder. No code edits.
-- There are **97 figures** to make (full list at the bottom). Bulgaria's 14 also have a
-  standalone brief in [`FIGURES_BULGARIA.md`](FIGURES_BULGARIA.md).
+- There are **~156 figures** to make. The original 83 are listed at the bottom; Bulgaria's 14
+  have a standalone brief in [`FIGURES_BULGARIA.md`](FIGURES_BULGARIA.md); and the 8 new nations'
+  ~59 are in [`FIGURES_NATIONS.md`](FIGURES_NATIONS.md). All three sets use this same art spec.
 
 ---
 

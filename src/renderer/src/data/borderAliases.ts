@@ -56,7 +56,7 @@ map('turkey',
 // Russia — Rus', Muscovy, the empire, the USSR
 map('russia',
   'russia', 'russian empire', 'ussr', 'tsardom of muscovy', 'grand duchy of moscow',
-  "kievan rus", 'kyivan rus', "rus' khaganate", 'novgorod', 'principality of kyiv',
+  "kievan rus", 'kyivan rus', "rus' khaganate", 'novgorod',
   'principality of novgorod', 'principality of vladimir-suzdal', 'south russia')
 
 // Poland — kingdom, union, commonwealth
@@ -94,17 +94,32 @@ map('bulgaria',
 // ---------------------------------------------------------------------------
 map('united-kingdom', 'picts', 'scotland', 'scots', 'welsh', 'cantia', 'dumnonia', 'dumonii', 'gwynedd', 'sussex')
 map('france', 'burgundy', 'burgunds', 'burgandy', 'west francia', 'britany', 'broërec', 'brittany', 'duchy of normandy')
-map('germany', 'saxons', 'czechs', 'duchy of bohemia', 'kingdom of bohemia', 'great moravia', 'moravia', 'prussians')
+map('germany', 'saxons', 'prussians')
 map('italy', 'emirate of sicily', 'duchy of benevento', 'dutchy of benevento', 'benevento', 'corsica', 'sardinia', 'lombards', 'exarchate of ravenna')
 map('spain', 'suebi', 'kingdom of asturias', 'kingdom of león', 'kingdom of castile', 'al-andalus')
 map('netherlands', 'frisians', 'frisia', 'county of holland', 'county of flanders', 'flanders', 'brabant')
-map('denmark', 'norway', 'kingdom of norway', 'icelandic commonwealth', 'iceland')
+map('denmark', 'icelandic commonwealth', 'iceland')
 map('sweden', 'svealand', 'geatland')
 map('hungary', 'avars', 'gepids', 'hunnic empire', 'huns', 'croatia', 'kingdom of croatia')
 map('poland', 'pomerania', 'duchy of pomerania', 'masovia', 'silesia')
-map('russia', 'principality of polotsk', 'principality of galicia-volhynia', 'principality of smolensk', 'volga bulgars')
+map('russia', 'principality of polotsk', 'principality of smolensk', 'volga bulgars')
 map('turkey', 'sultanate of rum', 'seljuk sultanate of rum', 'danishmends')
 map('greece', 'latin empire', 'empire of nicaea', 'despotate of epirus', 'nicaea')
+
+// ---------------------------------------------------------------------------
+// Modern nations added as full entities (the "missing countries" expansion).
+// Several names were previously mapped to a neighbour for interactivity and are
+// now corrected to their own entity (Norway off Denmark, Bohemia/Moravia off
+// Germany, Galicia-Volhynia & Kyiv off Russia).
+// ---------------------------------------------------------------------------
+map('norway', 'norway', 'kingdom of norway')
+map('ireland', 'ireland', 'irlanda', 'kingdom of ireland')
+map('czechia', 'czechs', 'czechoslovakia', 'czech republic', 'bohemia', 'duchy of bohemia', 'kingdom of bohemia', 'great moravia', 'moravia')
+map('serbia', 'serbia', 'serbian empire', 'kingdom of serbia', 'principality of serbia')
+map('romania', 'romania', 'dacia', 'wallachia', 'principality of wallachia', 'moldavia', 'principality of moldavia', 'united principalities')
+map('ukraine', 'ukraine', 'cossack hetmanate', 'hetmanate', 'principality of galicia-volhynia', 'principality of kyiv')
+map('switzerland', 'switzerland', 'swiss confederation', 'helvetic republic')
+map('belgium', 'belgium', 'austrian netherlands', 'habsburg netherlands', 'spanish netherlands')
 
 export const BORDER_ALIAS = A
 
