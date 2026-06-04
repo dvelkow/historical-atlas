@@ -98,11 +98,10 @@ map('germany', 'saxons', 'prussians')
 map('italy', 'emirate of sicily', 'duchy of benevento', 'dutchy of benevento', 'benevento', 'corsica', 'sardinia', 'lombards', 'exarchate of ravenna')
 map('spain', 'suebi', 'kingdom of asturias', 'kingdom of león', 'kingdom of castile', 'al-andalus')
 map('netherlands', 'frisians', 'frisia', 'county of holland', 'county of flanders', 'flanders', 'brabant')
-map('denmark', 'icelandic commonwealth', 'iceland')
 map('sweden', 'svealand', 'geatland')
-map('hungary', 'avars', 'gepids', 'hunnic empire', 'huns', 'croatia', 'kingdom of croatia')
+map('hungary', 'avars', 'gepids', 'hunnic empire', 'huns')
 map('poland', 'pomerania', 'duchy of pomerania', 'masovia', 'silesia')
-map('russia', 'principality of polotsk', 'principality of smolensk', 'volga bulgars')
+map('russia', 'principality of smolensk', 'volga bulgars')
 map('turkey', 'sultanate of rum', 'seljuk sultanate of rum', 'danishmends')
 map('greece', 'latin empire', 'empire of nicaea', 'despotate of epirus', 'nicaea')
 
@@ -120,6 +119,28 @@ map('romania', 'romania', 'dacia', 'wallachia', 'principality of wallachia', 'mo
 map('ukraine', 'ukraine', 'cossack hetmanate', 'hetmanate', 'principality of galicia-volhynia', 'principality of kyiv')
 map('switzerland', 'switzerland', 'swiss confederation', 'helvetic republic')
 map('belgium', 'belgium', 'austrian netherlands', 'habsburg netherlands', 'spanish netherlands')
+
+// ---------------------------------------------------------------------------
+// Wave-2 nations — the remaining European sovereign states, added as full
+// entities so the modern map is almost fully interactive. A few names were
+// previously mapped to a neighbour and are now promoted: Croatia off Hungary,
+// Iceland off Denmark, the Principality of Polotsk off Russia → Belarus.
+// ---------------------------------------------------------------------------
+map('finland', 'finland', 'finns')
+map('estonia', 'estonia')
+map('latvia', 'latvia')
+map('lithuania', 'lithuania') // the medieval Grand Duchy (1300) and the modern state
+map('croatia', 'croatia', 'kingdom of croatia')
+map('slovakia', 'slovakia')
+map('slovenia', 'slovenia')
+map('bosnia', 'bosnia', 'bosnia and herzegovina', 'bosnia-herzegovina')
+map('moldova', 'moldova') // distinct from historical "Moldavia" (→ romania)
+map('belarus', 'byelarus', 'principality of polotsk')
+map('iceland', 'iceland', 'icelandic commonwealth')
+map('albania', 'albania')
+map('north-macedonia', 'macedonia', 'north macedonia')
+map('montenegro', 'montenegro')
+map('luxembourg', 'luxembourg')
 
 export const BORDER_ALIAS = A
 
