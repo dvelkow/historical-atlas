@@ -124,15 +124,82 @@ export const events: HistEvent[] = [
 
 // ---- Lookup helpers -------------------------------------------------------
 
+// Events carry historically-specific polity ids ("byzantine-empire",
+// "ottoman-empire", "kingdom-of-france"…). This maps each of those to the
+// modern country entity that best represents it, so selecting a country (e.g.
+// "greece") surfaces the events of its historical predecessors. Polities with
+// no modern European entity (crusader-states, european-union, united-states…)
+// are intentionally absent.
+const EVENT_ENTITY_TO_COUNTRY: Record<string, string> = {
+  'roman-empire': 'italy',
+  'western-roman-empire': 'italy',
+  'kingdom-of-italy': 'italy',
+  'italy-republic': 'italy',
+  'republic-of-venice': 'italy',
+  'papal-states': 'italy',
+  'byzantine-empire': 'greece',
+  'frankish-kingdom': 'france',
+  'carolingian-empire': 'france',
+  'kingdom-of-france': 'france',
+  'first-french-empire': 'france',
+  'france-restoration': 'france',
+  'france-modern': 'france',
+  'french-third-republic': 'france',
+  'holy-roman-empire': 'germany',
+  'kingdom-of-prussia': 'germany',
+  'german-empire': 'germany',
+  'weimar-germany': 'germany',
+  'nazi-germany': 'germany',
+  'west-germany': 'germany',
+  'east-germany': 'germany',
+  'germany-reunified': 'germany',
+  'germanic-peoples': 'germany',
+  'kievan-rus': 'russia',
+  'grand-duchy-moscow': 'russia',
+  'russian-empire': 'russia',
+  'soviet-union': 'russia',
+  'russian-federation': 'russia',
+  'golden-horde': 'russia',
+  'kingdom-of-england': 'united-kingdom',
+  'anglo-saxon-england': 'united-kingdom',
+  'kingdom-of-great-britain': 'united-kingdom',
+  'united-kingdom': 'united-kingdom',
+  'ottoman-empire': 'turkey',
+  'seljuk-rum': 'turkey',
+  'crown-of-castile': 'spain',
+  'crown-of-aragon': 'spain',
+  'spanish-empire': 'spain',
+  'al-andalus': 'spain',
+  'almohad-caliphate': 'spain',
+  'umayyad-caliphate': 'spain',
+  'visigoths': 'spain',
+  'austria-hungary': 'austria',
+  'austrian-empire': 'austria',
+  'dutch-republic': 'netherlands',
+  'swedish-empire': 'sweden',
+  'polish-lithuanian-commonwealth': 'poland',
+  'kingdom-of-serbia': 'serbia',
+  'dacian-kingdom': 'romania',
+  'huns': 'hungary',
+  ukraine: 'ukraine'
+}
+
+/** Does this event concern the given country entity (directly or via a
+ *  historical predecessor)? */
+export function eventLinksCountry(ev: HistEvent, countryId: string | null | undefined): boolean {
+  if (!countryId || !ev.entityIds) return false
+  return ev.entityIds.some((eid) => eid === countryId || EVENT_ENTITY_TO_COUNTRY[eid] === countryId)
+}
+
 /**
- * Returns events near a year, nearest first. If `entityId` is provided, events
- * linked to that entity are favoured (sorted ahead of unrelated ones at a
- * similar distance).
+ * Returns events near a year, nearest first. If `entityId` is a selected
+ * country, events linked to it (or to a historical predecessor) are favoured —
+ * pulled ahead of unrelated events at a similar distance.
  */
 export function eventsNear(year: number, entityId?: string, limit = 8): HistEvent[] {
   const scored = events.map((e) => {
     const distance = Math.abs(e.year - year)
-    const linked = entityId && e.entityIds?.includes(entityId) ? 1 : 0
+    const linked = eventLinksCountry(e, entityId) ? 1 : 0
     // Linked events get a distance discount so they surface for the selection.
     const score = distance - linked * 40
     return { e, distance, score }

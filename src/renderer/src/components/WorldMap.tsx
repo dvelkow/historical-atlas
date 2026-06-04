@@ -347,6 +347,19 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
       <div className="map-footnote">
         Borders ≈ {fmtYear(epoch)} · click a polity to explore · scroll to zoom · drag to pan
       </div>
+
+      <div className="map-legend" aria-label="Map legend">
+        <span className="map-legend-title">Relations</span>
+        <span className="map-legend-row">
+          <i className="legend-line legend-line--war" /> War
+        </span>
+        <span className="map-legend-row">
+          <i className="legend-line legend-line--ally" /> Alliance
+        </span>
+        <span className="map-legend-row">
+          <i className="legend-line legend-line--interaction" /> Interaction
+        </span>
+      </div>
     </div>
   )
 }

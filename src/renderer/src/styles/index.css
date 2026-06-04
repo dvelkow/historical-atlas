@@ -682,6 +682,68 @@ button {
   border-radius: 4px;
   border: 1px solid var(--line-soft);
 }
+/* Colour key for the relation arrows + highlighted neighbours. Sits quietly in
+   the corner and brightens on hover so it never competes with the map. */
+.map-legend {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 7px 11px 8px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: rgba(8, 12, 20, 0.6);
+  border: 1px solid var(--line-soft);
+  border-radius: 5px;
+  opacity: 0.62;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+.map-legend:hover {
+  opacity: 1;
+}
+.map-legend-title {
+  font-family: var(--serif);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  margin-bottom: 2px;
+}
+.map-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #c4ccda;
+}
+.legend-line {
+  width: 18px;
+  height: 0;
+  border-top: 2px dashed currentColor;
+  position: relative;
+  flex: none;
+}
+.legend-line::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -3px;
+  border-left: 5px solid currentColor;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+.legend-line--war {
+  color: #d6504a;
+}
+.legend-line--ally {
+  color: #4a8fd6;
+}
+.legend-line--interaction {
+  color: #e0a14e;
+}
 .map-zoom {
   position: absolute;
   left: 14px;
@@ -803,6 +865,17 @@ button {
   font-size: 22px;
   color: var(--gold-2);
 }
+.tl-focus {
+  margin-top: 3px;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #79b6d6;
+  white-space: nowrap;
+  max-width: 92px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .tl-event-track {
   display: flex;
   gap: 8px;
@@ -831,6 +904,15 @@ button {
 .tl-event--near {
   border-color: var(--gold);
   background: rgba(202, 161, 74, 0.1);
+}
+/* Event involving the selected polity (or a historical predecessor): a cool
+   accent rail on the left, distinct from the gold "near the year" highlight. */
+.tl-event--linked {
+  border-left: 3px solid #79b6d6;
+  padding-left: 7px;
+}
+.tl-event--linked .tl-event-year {
+  color: #9cd0ea;
 }
 .tl-event-top {
   display: flex;

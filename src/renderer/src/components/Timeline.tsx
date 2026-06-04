@@ -1,31 +1,50 @@
 import type { Era, HistEvent } from '../data/types'
-import { eras, MAX_YEAR } from '../data'
+import { eras, MAX_YEAR, eventLinksCountry } from '../data'
 import { PlaceholderIcon } from './PlaceholderIcon'
 
 interface Props {
   year: number
   era: Era
   events: HistEvent[]
+  selectedId?: string | null
+  selectedName?: string
   onPickEra: (eraId: string) => void
   onPickEvent: (year: number) => void
 }
 
-export function Timeline({ year, era, events, onPickEra, onPickEvent }: Props): JSX.Element {
+export function Timeline({
+  year,
+  era,
+  events,
+  selectedId,
+  selectedName,
+  onPickEra,
+  onPickEvent
+}: Props): JSX.Element {
   return (
     <div className="timeline">
       <div className="timeline-events">
         <div className="timeline-events-head">
           <span className="tl-kicker">Events near</span>
           <span className="tl-year">{fmtYear(year)}</span>
+          {selectedName && (
+            <span className="tl-focus" title={`Events involving ${selectedName} are highlighted`}>
+              {selectedName} highlighted
+            </span>
+          )}
         </div>
         <div className="tl-event-track">
           {events.length === 0 && <span className="muted">No major events nearby.</span>}
           {events.map((ev) => {
             const near = Math.abs(ev.year - year) <= 3
+            const linked = eventLinksCountry(ev, selectedId)
+            const cls = ['tl-event', near ? 'tl-event--near' : '', linked ? 'tl-event--linked' : '']
+              .filter(Boolean)
+              .join(' ')
             return (
               <button
                 key={ev.id}
-                className={near ? 'tl-event tl-event--near' : 'tl-event'}
+                className={cls}
                 onClick={() => onPickEvent(ev.year)}
                 title={ev.description}
               >

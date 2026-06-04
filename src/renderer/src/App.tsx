@@ -62,7 +62,10 @@ export default function App(): JSX.Element {
   const country = useMemo(() => (selectedId ? getCountry(selectedId) : undefined), [selectedId])
   const period = useMemo(() => periodFor(country, year), [country, year])
   const relations = useMemo(() => relationsAt(country, year), [country, year])
-  const timelineEvents = useMemo(() => eventsNear(year, undefined, 9), [year])
+  const timelineEvents = useMemo(
+    () => eventsNear(year, selectedId ?? undefined, 9),
+    [year, selectedId]
+  )
 
   const selectCountry = useCallback((id: string) => setSelectedId(id), [])
   const jumpToEra = useCallback(
@@ -144,6 +147,8 @@ export default function App(): JSX.Element {
           year={year}
           era={era}
           events={timelineEvents}
+          selectedId={selectedId}
+          selectedName={country?.name}
           onPickEra={jumpToEra}
           onPickEvent={focusEvent}
         />
