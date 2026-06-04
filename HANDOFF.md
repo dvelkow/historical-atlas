@@ -6,6 +6,57 @@ what's done, what's in progress **right now**, and how to verify your work. Read
 
 ---
 
+## ✅ DONE: polish — map legend + per-country events (2026-06-04)
+
+Two finishing touches. **(1) Map legend** — a quiet bottom-right colour key (`.map-legend`) for the
+relation arrows / highlighted neighbours (red War, blue Alliance, orange Interaction), so the
+colour language is self-explanatory; it sits opposite the bottom-left footnote and brightens on
+hover. **(2) Per-country events** — events in `events.ts` carry historically-specific polity ids
+(`byzantine-empire`, `ottoman-empire`, `kingdom-of-france`…) that never matched our country ids.
+Added `EVENT_ENTITY_TO_COUNTRY` (a legacy→country alias map) + an exported `eventLinksCountry()`;
+`eventsNear` now favours events linked to the selected country **or a historical predecessor**, and
+`Timeline` rail-highlights them and shows a "<country> highlighted" tag. So picking Greece pulls
+"Fall of Constantinople" forward; picking Turkey surfaces the Ottoman events; etc. (The other half
+of this gap, **per-relation year ranges**, was deliberately deferred — see `EXPERIENCE_GAPS.md §3`.)
+
+## ✅ DONE: deepened uneven era coverage (2026-06-04)
+
+Split the worst single-block compressions into era-accurate periods, each with its own
+government/capital/summary, relations and figures: **Greece 3→9** (Roman / Byzantine / Late
+Byzantium & Frankish Greece / Ottoman / Kingdom / World Wars & Civil War / postwar & the Colonels'
+junta / restored democracy / Hellenic Republic), **Turkey 4→10** (Roman-Byzantine Anatolia /
+Seljuk Rum / Ottoman rise / classical age / first retreat / long decline / reform-collapse-partition
+/ Atatürk / multiparty & the coups / Erdoğan), **Denmark 4→8** (added the Kalmar Union; split the
+1849–2025 mega-block), **Portugal 6→9** (filled the Iberian Union 1580–1640 and the 1910–1974 hole),
+**Netherlands 6→10** (filled the Batavian/French era; split the 1815–2025 mega-block). The two data
+invariants stay green; verified in-app that scrubbing Greece now shows 8 distinct period panels.
+
+## ✅ DONE: missing modern nations — wave 2 (2026-06-04)
+
+Added **15 full entities** so the modern map is almost fully interactive: **Finland, Estonia, Latvia,
+Lithuania, Croatia, Slovakia, Slovenia, Bosnia and Herzegovina, Moldova, Belarus, Iceland, Albania,
+North Macedonia, Montenegro, Luxembourg** — each a `countries/*.ts` with era-accurate periods,
+validated relations and figures (generated via parallel subagents, then hard-validated). Border
+aliases added for each, incl. the medieval shapes the dataset carries (Grand Duchy of Lithuania
+@1300, Croatia @1000–1200, the Principality of Moldavia/"Moldova" @1400, Bosnia @1400/1880, the
+Finns @800). Three names **promoted** off a stand-in neighbour: Croatia off Hungary, Iceland off
+Denmark, the Principality of Polotsk off Russia → Belarus. Note Belarus's modern polygon is spelled
+**"Byelarus"** in the dataset. **39 entities total; interactive polities at 2010: 24 → 39** (of 68
+map polygons; the rest are non-European framers + microstates — see `EXPERIENCE_GAPS.md §2`).
+
+## ✅ DONE: early-medieval map quality — fragment merge + warm land (2026-06-04)
+
+Fixed the user-reported "messy ≈888" map in `WorldMap.tsx` + CSS. **(a)** The source data draws some
+polities as several separate features ("Carolingian Empire" ×2, "Danes" ×2, the Ostrogoths ×4 @600,
+etc.); `featurePaths` now **merges all fragments of one polity into a single SVG path** — grouped by
+entity id for tracked polities, by name for context, pooled for anonymous land — so translucent
+fills no longer double-darken at overlaps and each polity is one clickable shape. **(b)** A new
+`orderedPaths` paint-order pass draws context → tracked → relation-target → **selected last**, so a
+highlight is never occluded by a neighbour drawn later in the array. **(c)** Reworked the land
+treatment for the classic antique-atlas **warm-land / cool-sea** contrast (`.land-base` warmer;
+`.country` context a notch lighter with a faint gold coastline) so untracked tribal regions read as
+land, not empty ocean; tracked-entity tint alpha 0.34→0.40. Verified epochs 100/600/800/1000/2010.
+
 ## ✅ DONE: projection + "whole map seeable" (2026-06-01)
 
 The map projection bug **and** the related "we can only see Russia" complaint are both

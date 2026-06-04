@@ -96,21 +96,23 @@ Pitfall: agents vary (some return text, some write the file themselves) — chec
 
 ---
 
-## Current focus (state as of 2026-06-02)
+## Current focus (state as of 2026-06-04)
 
-Recent DONE (see `HANDOFF.md` for details): projection fix → full-view-on-select → vanishing-
-countries (wrap-artifact) fix → land backdrop → period-correct names + "(Modern X)" → pre-1200
-build-out → **Bulgaria expansion + 14 portraits** → **8 new nations** (gap #1 wave 1) → **filled
-every >150y "dark age" gap** (gap #2). The app now has **24 entities, ~154 periods, ~415
-relations, ~220 figure slots, 97 portraits**.
+Recent DONE (see `HANDOFF.md`): projection fix → full-view-on-select → vanishing-countries fix →
+land backdrop → "(Modern X)" → pre-1200 build-out → Bulgaria + portraits → 8 new nations (wave 1) →
+dark-age gaps → **early-medieval map fragment-merge + warm land** → **15 wave-2 nations (24→39
+entities)** → **deepened Greece/Turkey/Denmark/Portugal/Netherlands** → **map legend + per-country
+events**. The app now has **39 entities, ~291 periods, ~833 relations, ~495 figure slots, 97
+portraits**, and the production build + Electron desktop app are up to date.
 
-We've been working through a ranked "3 biggest gaps" list:
-- **#1 missing modern nations** — wave 1 done (Norway, Ireland, Czechia, Serbia, Romania,
-  Ukraine, Switzerland, Belgium). **Wave 2 still open** (Finland, Baltics, Croatia, Slovakia,
-  Slovenia, Bosnia, Moldova, Belarus, Iceland).
-- **#2 dark-age timeline gaps** — **done** (invariant now green).
-- **#3 uneven era depth** — **not started** (Greece/Turkey/Denmark compress huge spans).
+The original ranked "3 biggest gaps" (early-medieval map, missing nations, era depth) and the first
+polish pass are **all done**. The re-ranked remaining backlog is in `EXPERIENCE_GAPS.md`; the top
+item is now **portraits** — ~97 PNGs for ~495 figure slots, so most figure cards are placeholders.
+That's an **asset/art task** (drop a 256×256 PNG named by `figureSlug(name)` into
+`assets/figures/`, then `npm run build`), not a code task — it needs an image generator/designer.
 
-**Newest user-reported issue (not yet fixed):** the early-medieval map (≈ year 888 / the 800
-epoch) looks messy — overlapping translucent shapes and "empty" patches. See
-`EXPERIENCE_GAPS.md` §3 for the diagnosis and suggested fix; that's the most likely next task.
+**Bulk-content tip that worked again here:** the 15 wave-2 nations and the 5 era-depth rewrites were
+produced by parallel subagents, each given the `countryTypes` schema, `bulgaria.ts` as the template,
+the **full valid-id list** (so cross-references resolve), an exact era-accurate period outline with
+year boundaries + eraIds, and "write the file, output one line." Then validate HARD: `npm run
+typecheck` + both invariant scripts above. Fast and high-quality if you validate after.
