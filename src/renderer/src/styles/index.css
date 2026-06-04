@@ -609,6 +609,22 @@ button {
   }
 }
 
+/* Faint always-on labels for the epoch's largest polities — an atlas touch.
+   Counter-scaled in JS so they keep a constant on-screen size at any zoom. */
+.map-labels {
+  pointer-events: none;
+}
+.map-plabel {
+  fill: #e9dec4;
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.66;
+  paint-order: stroke;
+  stroke: #0a0f18;
+  stroke-width: 2.6px;
+  stroke-linejoin: round;
+}
 .sel-marker {
   pointer-events: none;
 }

@@ -127,6 +127,64 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
     return [...featurePaths].sort((a, b) => prio(a) - prio(b))
   }, [featurePaths, selectedId, targetType])
 
+  // Always-on labels for the biggest polities of the epoch (an "atlas" touch).
+  // Each tracked entity's fragments are unioned into one bbox; the label is
+  // anchored at the centre of the *on-frame* portion (so empires that run off
+  // the east edge, like Russia/the Ottomans, get a label over their visible
+  // mass), and only the few largest are shown to avoid clutter. The selected
+  // polity is excluded — it already gets its own prominent label.
+  const majorLabels = useMemo(() => {
+    const byEntity = new Map<
+      string,
+      { name: string; bestArea: number; x0: number; y0: number; x1: number; y1: number }
+    >()
+    for (const f of features.features) {
+      const name = f.properties?.name
+      const entityId = entityForBorderName(name)
+      if (!entityId || !name) continue
+      const b = geoBounds(f)
+      if (!b) continue
+      const w = b[1][0] - b[0][0]
+      const h = b[1][1] - b[0][1]
+      if (w > MAP_WIDTH * 2.5 || h > MAP_HEIGHT * 2.5) continue // wrap artifact
+      const fragArea = w * h
+      const g = byEntity.get(entityId)
+      if (g) {
+        g.x0 = Math.min(g.x0, b[0][0])
+        g.y0 = Math.min(g.y0, b[0][1])
+        g.x1 = Math.max(g.x1, b[1][0])
+        g.y1 = Math.max(g.y1, b[1][1])
+        if (fragArea > g.bestArea) {
+          g.bestArea = fragArea
+          g.name = name
+        }
+      } else {
+        byEntity.set(entityId, { name, bestArea: fragArea, x0: b[0][0], y0: b[0][1], x1: b[1][0], y1: b[1][1] })
+      }
+    }
+    const out: { entityId: string; name: string; cx: number; cy: number; area: number }[] = []
+    for (const [entityId, g] of byEntity) {
+      const ix0 = Math.max(g.x0, 0)
+      const iy0 = Math.max(g.y0, 0)
+      const ix1 = Math.min(g.x1, MAP_WIDTH)
+      const iy1 = Math.min(g.y1, MAP_HEIGHT)
+      const iw = ix1 - ix0
+      const ih = iy1 - iy0
+      if (iw <= 0 || ih <= 0) continue
+      out.push({ entityId, name: g.name, cx: (ix0 + ix1) / 2, cy: (iy0 + iy1) / 2, area: iw * ih })
+    }
+    // Greedily place largest-first, skipping a label that would sit almost on
+    // top of one already placed (drops the smaller of an overlapping pair, e.g.
+    // Sweden vs Denmark–Norway crowded into Scandinavia).
+    const placed: typeof out = []
+    for (const l of out.filter((x) => x.area > 2600).sort((a, b) => b.area - a.area)) {
+      if (placed.length >= 9) break
+      if (placed.some((p) => Math.abs(p.cx - l.cx) < 42 && Math.abs(p.cy - l.cy) < 14)) continue
+      placed.push(l)
+    }
+    return placed
+  }, [features])
+
   const arrows = useMemo(() => {
     if (!selected || !selectedPresent) return []
     const from = project(selected.centroid[0], selected.centroid[1])
@@ -325,6 +383,18 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
                 style={{ filter: `drop-shadow(0 0 2.5px ${ARC_COLOR[a.type]})` }}
               />
             ))}
+          </g>
+
+          <g className="map-labels">
+            {majorLabels
+              .filter((l) => l.entityId !== selectedId)
+              .map((l) => (
+                <g key={l.entityId} transform={`translate(${l.cx} ${l.cy}) scale(${1 / view.k})`}>
+                  <text className="map-plabel" textAnchor="middle">
+                    {l.name}
+                  </text>
+                </g>
+              ))}
           </g>
 
           {selectedPt && selected && (
