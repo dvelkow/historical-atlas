@@ -86,6 +86,28 @@ const portugal: Country = {
       ]
     },
     {
+      startYear: 1580,
+      endYear: 1640,
+      eraId: 'early-modern',
+      name: 'Iberian Union',
+      modernEquivalent: false,
+      government: 'Personal union under the Spanish Habsburg crown',
+      capital: 'Lisbon (king resident in Madrid)',
+      religion: ['Roman Catholicism'],
+      culture: ['Portuguese'],
+      summary:
+        'When King Sebastian died at Alcácer Quibir and the line failed, the 1580 succession crisis placed Portugal under the Spanish Habsburg kings — the "Sixty Years’ Captivity." Bound to Madrid’s wars, Portugal saw Dutch and English fleets prey on its Asian and Brazilian trade posts, until the nobles’ revolt of 1640 restored an independent crown.',
+      relations: [
+        { to: 'spain', type: 'interaction', label: 'Union of the crowns (1580)', note: 'Philip II of Spain became Philip I of Portugal, joining the two monarchies for sixty years.' },
+        { to: 'netherlands', type: 'war', label: 'Dutch raids on the empire', note: 'Dragged into Spain’s war with the Dutch, who seized Portuguese trade posts in Asia and Brazil.' },
+        { to: 'united-kingdom', type: 'war', label: 'Anglo-Spanish hostilities', note: 'English privateers and fleets struck Portuguese shipping while the crown was tied to Habsburg Spain.' }
+      ],
+      figures: [
+        { name: 'Philip II of Spain', title: 'King (as Philip I of Portugal)', years: 'r. 1580–1598' },
+        { name: 'Sebastian I', title: 'Last Avis king, fell at Alcácer Quibir', years: 'r. 1557–1578' }
+      ]
+    },
+    {
       startYear: 1640,
       endYear: 1910,
       eraId: 'early-modern',
@@ -100,6 +122,49 @@ const portugal: Country = {
         { to: 'spain', type: 'war', label: 'Restoration War', note: 'War of independence from the Spanish crown (1640–68).' }
       ],
       figures: [{ name: 'Marquis of Pombal', title: 'Reforming minister', years: '1699–1782' }]
+    },
+    {
+      startYear: 1910,
+      endYear: 1933,
+      eraId: 'long-19th',
+      name: 'First Republic',
+      government: 'Parliamentary republic',
+      capital: 'Lisbon',
+      religion: ['Secular state / Roman Catholicism'],
+      culture: ['Portuguese'],
+      summary:
+        'The revolution of 1910 toppled the monarchy and proclaimed a republic — turbulent and fiercely anticlerical, it churned through dozens of governments and constant coups. Portugal entered the Great War on the Allied side in 1916, fighting in Flanders and Africa, until the military coup of 1926 ended parliamentary rule and opened the way to dictatorship.',
+      relations: [
+        { to: 'united-kingdom', type: 'ally', label: 'Allied co-belligerent in WWI', note: 'Honouring the old alliance, Portugal sent an expeditionary corps to fight alongside Britain in France.' },
+        { to: 'germany', type: 'war', label: 'The Great War (1916–18)', note: 'Germany declared war after Portugal seized German ships; Portuguese troops fought on the Western Front and in Africa.' },
+        { to: 'france', type: 'ally', label: 'Western Front', note: 'Portuguese divisions held the line in Flanders, suffering heavily at the Battle of the Lys (1918).' }
+      ],
+      figures: [
+        { name: 'Afonso Costa', title: 'Republican Prime Minister', years: '1871–1937' },
+        { name: 'Sidónio Pais', title: 'President-dictator of the "New Republic"', years: 'r. 1917–1918' }
+      ]
+    },
+    {
+      startYear: 1933,
+      endYear: 1974,
+      eraId: 'world-wars',
+      name: 'Estado Novo',
+      modernEquivalent: false,
+      government: 'Corporatist authoritarian regime',
+      capital: 'Lisbon',
+      religion: ['Roman Catholicism'],
+      culture: ['Portuguese'],
+      summary:
+        'António de Oliveira Salazar built the "New State," a corporatist authoritarian regime that ruled Portugal for four decades. It kept the country neutral in the Second World War while leasing the Azores to the Allies, then clung to its African empire through the long, draining Colonial Wars of the 1960s and 70s — until the army’s Carnation Revolution overthrew the dictatorship in 1974.',
+      relations: [
+        { to: 'united-kingdom', type: 'ally', label: 'Azores bases in WWII', note: 'Though neutral, Salazar invoked the old alliance to grant Britain and the Allies bases in the Azores (1943).' },
+        { to: 'spain', type: 'ally', label: 'Iberian Pact', note: 'Salazar and Franco signed a non-aggression pact (1939), keeping both Iberian dictatorships out of the world war.' },
+        { to: 'germany', type: 'interaction', label: 'Wartime wolfram trade', note: 'Neutral Portugal sold tungsten ore to both the Axis and the Allies during the Second World War.' }
+      ],
+      figures: [
+        { name: 'António de Oliveira Salazar', title: 'Prime Minister & founder of the Estado Novo', years: '1889–1970' },
+        { name: 'Marcello Caetano', title: 'Last Estado Novo premier', years: 'r. 1968–1974' }
+      ]
     },
     {
       startYear: 1974,

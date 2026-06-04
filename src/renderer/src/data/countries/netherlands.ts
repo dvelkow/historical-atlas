@@ -109,20 +109,114 @@ const netherlands: Country = {
       figures: [{ name: 'William the Silent', title: 'Leader of the revolt', years: '1533–1584' }]
     },
     {
+      startYear: 1795,
+      endYear: 1815,
+      eraId: 'revolutionary',
+      name: 'Batavian Republic & French Rule',
+      modernEquivalent: false,
+      government: 'Revolutionary republic → French client kingdom → French départements',
+      capital: 'The Hague / Amsterdam',
+      religion: ['Calvinism / Catholicism (disestablished)'],
+      culture: ['Dutch'],
+      summary:
+        'Dutch Patriots and invading French armies toppled the old Republic in 1795 and proclaimed the Batavian Republic; Napoleon reshaped it into the Kingdom of Holland under his brother Louis Bonaparte (1806), then annexed the Netherlands outright into the French Empire (1810–1813).',
+      relations: [
+        { to: 'france', type: 'interaction', label: 'French client & annexation', note: 'A sister republic, then Louis Bonaparte’s Kingdom of Holland, then absorbed into Napoleon’s France (1810).' },
+        { to: 'united-kingdom', type: 'war', label: 'War with Britain', note: 'As a French satellite the Dutch lost colonies and fleets to Britain, including the defeat at Camperdown (1797).' },
+        { to: 'germany', type: 'war', label: 'Liberation of 1813', note: 'Napoleon’s collapse after Leipzig let the Dutch rise and expel the French, restoring the House of Orange.' }
+      ],
+      figures: [
+        { name: 'Louis Bonaparte', title: 'King of Holland', years: 'r. 1806–1810' },
+        { name: 'Rutger Jan Schimmelpenninck', title: 'Grand Pensionary of the Batavian Commonwealth', years: 'r. 1805–1806' }
+      ]
+    },
+    {
       startYear: 1815,
-      endYear: 2025,
-      eraId: 'contemporary',
+      endYear: 1914,
+      eraId: 'long-19th',
       name: 'Kingdom of the Netherlands',
       government: 'Constitutional monarchy',
-      capital: 'Amsterdam',
+      capital: 'Amsterdam / The Hague',
+      religion: ['Protestant / Catholic'],
+      culture: ['Dutch'],
+      summary:
+        'The Congress of Vienna created the United Kingdom of the Netherlands under William I (1815), joining the Dutch and Belgian provinces; Belgium seceded (1830–39), Thorbecke’s 1848 constitution forged a true parliamentary monarchy, and a vast colonial empire in the East Indies underwrote a prosperous, neutral nation.',
+      relations: [
+        { to: 'belgium', type: 'war', label: 'Belgian secession (1830–39)', note: 'The southern provinces revolted and broke away to form independent Belgium.' },
+        { to: 'united-kingdom', type: 'interaction', label: 'Vienna settlement & free trade', note: 'Britain backed the new kingdom as a buffer against France and shared in its global commerce.' },
+        { to: 'germany', type: 'interaction', label: 'Customs & the Rhine trade', note: 'Growing economic ties bound Dutch ports to the industrialising German hinterland.' }
+      ],
+      figures: [
+        { name: 'William I', title: 'First King of the Netherlands', years: 'r. 1815–1840' },
+        { name: 'Johan Thorbecke', title: 'Liberal statesman (1848 constitution)', years: '1798–1872' },
+        { name: 'Wilhelmina', title: 'Queen of the Netherlands', years: 'r. 1890–1948' }
+      ]
+    },
+    {
+      startYear: 1914,
+      endYear: 1945,
+      eraId: 'world-wars',
+      name: 'The World Wars',
+      modernEquivalent: false,
+      government: 'Constitutional monarchy (occupied 1940–45)',
+      capital: 'Amsterdam / The Hague',
+      religion: ['Protestant / Catholic'],
+      culture: ['Dutch'],
+      summary:
+        'The Netherlands stayed neutral through the First World War, but Nazi Germany invaded in May 1940; five years of brutal occupation followed, marked by the deportation and murder of most Dutch Jews and the famine of the Hunger Winter of 1944–45 before liberation.',
+      relations: [
+        { to: 'germany', type: 'war', label: 'Invasion & occupation (1940–45)', note: 'Germany overran the neutral Netherlands in 1940 and occupied it until 1945; Rotterdam was devastated by bombing.' },
+        { to: 'united-kingdom', type: 'ally', label: 'Allied liberation', note: 'British, Canadian and American forces freed the country, including the airborne battle at Arnhem (1944).' },
+        { to: 'belgium', type: 'interaction', label: 'Shared occupation & exile', note: 'Both Low Countries were overrun in 1940, their governments fleeing into exile in London.' }
+      ],
+      figures: [
+        { name: 'Wilhelmina', title: 'Queen-in-exile during WWII', years: 'r. 1890–1948' },
+        { name: 'Anne Frank', title: 'Diarist of the occupation', years: '1929–1945' }
+      ]
+    },
+    {
+      startYear: 1945,
+      endYear: 1992,
+      eraId: 'cold-war',
+      name: 'Postwar & Decolonization',
+      government: 'Constitutional monarchy',
+      capital: 'Amsterdam / The Hague',
       religion: ['Protestant / Catholic / secular'],
       culture: ['Dutch'],
-      summary: 'A prosperous constitutional monarchy and trading nation, a founding member of NATO and the European Communities.',
+      summary:
+        'After liberation the Netherlands lost its great colony when Indonesia won independence (1949); it became a founding member of NATO and the EEC, rebuilt under a generous welfare state, and after the catastrophic North Sea flood of 1953 raised the colossal Delta Works to hold back the sea.',
       relations: [
-        { to: 'germany', type: 'ally', label: 'EU & Benelux partner', note: 'Founding member of the European project.' },
-        { to: 'france', type: 'ally', label: 'EU partner', note: 'Close European ally.' }
+        { to: 'belgium', type: 'ally', label: 'The Benelux union', note: 'With Belgium and Luxembourg the Dutch formed the Benelux customs union, a model for European integration.' },
+        { to: 'germany', type: 'ally', label: 'EEC & NATO founder', note: 'A founding member of the European Communities (1957) and of NATO (1949) alongside West Germany.' },
+        { to: 'luxembourg', type: 'ally', label: 'Benelux partner', note: 'Tied to Luxembourg through Benelux and the early European project.' },
+        { to: 'united-kingdom', type: 'ally', label: 'Western alliance', note: 'A close Cold War partner within NATO against the Soviet bloc.' }
       ],
-      figures: [{ name: 'Willem-Alexander', title: 'King', years: 'r. 2013–' }]
+      figures: [
+        { name: 'Juliana', title: 'Queen of the Netherlands', years: 'r. 1948–1980' },
+        { name: 'Beatrix', title: 'Queen of the Netherlands', years: 'r. 1980–2013' }
+      ]
+    },
+    {
+      startYear: 1992,
+      endYear: 2025,
+      eraId: 'contemporary',
+      name: 'Modern Netherlands',
+      government: 'Constitutional monarchy',
+      capital: 'Amsterdam / The Hague',
+      religion: ['Secular / Protestant / Catholic'],
+      culture: ['Dutch'],
+      summary:
+        'The Maastricht Treaty, signed in the Dutch city of Maastricht in 1992, launched the European Union; the Netherlands became a core eurozone and EU member, with Rotterdam standing as Europe’s greatest port and a gateway to the continent.',
+      relations: [
+        { to: 'germany', type: 'ally', label: 'EU & eurozone partner', note: 'A founding eurozone member tightly integrated with Germany, its largest trading partner.' },
+        { to: 'belgium', type: 'ally', label: 'Benelux & EU neighbour', note: 'Continued close cooperation through Benelux and the European Union.' },
+        { to: 'france', type: 'ally', label: 'European Union core', note: 'A central partner in the EU and the single market.' },
+        { to: 'united-kingdom', type: 'interaction', label: 'Trade & Brexit', note: 'A major trading partner whose departure from the EU (Brexit) reshaped North Sea commerce.' }
+      ],
+      figures: [
+        { name: 'Beatrix', title: 'Queen of the Netherlands', years: 'r. 1980–2013' },
+        { name: 'Willem-Alexander', title: 'King of the Netherlands', years: 'r. 2013–' }
+      ]
     }
   ]
 }
