@@ -43,29 +43,63 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
   // Period-accurate border shapes for the epoch nearest this year.
   const { epoch, features } = useMemo(() => bordersForYear(year), [year])
 
-  const featurePaths = useMemo(
-    () =>
-      features.features
-        .map((f, i) => ({ i, name: f.properties?.name, entityId: entityForBorderName(f.properties?.name), f }))
-        // Drop globe-spanning wrap artifacts from the source data: a few polygons
-        // (e.g. "central Asian khanates" in the 1700/1715 epochs) cross the
-        // antimeridian and project to a frame-filling shape. As non-aliased context
-        // they're drawn with an opaque fill, so they paint over every country drawn
-        // before them — the "countries vanish at 1757 and earlier" bug. Only ever
-        // drop NON-interactive context; an aliased country (Russia/USSR also wrap in
-        // later epochs) is always kept and just renders translucent.
-        .filter((fp) => {
-          if (fp.entityId) return true
-          const b = geoBounds(fp.f)
-          if (!b) return false
-          return !(b[1][0] - b[0][0] > MAP_WIDTH * 2.5 || b[1][1] - b[0][1] > MAP_HEIGHT * 2.5)
+  const featurePaths = useMemo(() => {
+    const kept = features.features
+      .map((f) => ({
+        name: f.properties?.name as string | undefined,
+        entityId: entityForBorderName(f.properties?.name),
+        f
+      }))
+      // Drop globe-spanning wrap artifacts from the source data: a few polygons
+      // (e.g. "central Asian khanates" in the 1700/1715 epochs) cross the
+      // antimeridian and project to a frame-filling shape. As non-aliased context
+      // they're drawn with an opaque fill, so they paint over every country drawn
+      // before them — the "countries vanish at 1757 and earlier" bug. Only ever
+      // drop NON-interactive context; an aliased country (Russia/USSR also wrap in
+      // later epochs) is always kept and just renders translucent.
+      .filter((fp) => {
+        if (fp.entityId) return true
+        const b = geoBounds(fp.f)
+        if (!b) return false
+        return !(b[1][0] - b[0][0] > MAP_WIDTH * 2.5 || b[1][1] - b[0][1] > MAP_HEIGHT * 2.5)
+      })
+      .map((fp) => ({ name: fp.name, entityId: fp.entityId, d: geoPathString(fp.f) }))
+      // Drop degenerate features that project to nothing (e.g. the zero-size
+      // "Ostrogoths" slivers in the 600 epoch) — they render no path anyway.
+      .filter((fp) => fp.d.length > 0)
+
+    // Merge fragments into ONE path per polity. The source draws several polities
+    // as multiple separate features (e.g. "Carolingian Empire" ×2, "Danes" ×2),
+    // which, when translucent and overlapping, double-darken the tint and fight
+    // over clicks. Grouping tracked polities by entity id (and named/anonymous
+    // context by name) means each polity is a single fill — no overlap stacking —
+    // and a single clickable, highlightable shape.
+    const groups = new Map<
+      string,
+      { key: string; names: Set<string>; entityId?: string; d: string }
+    >()
+    for (const fp of kept) {
+      const key = fp.entityId ? `e:${fp.entityId}` : fp.name ? `n:${fp.name}` : '__ctx__'
+      const g = groups.get(key)
+      if (g) {
+        g.d += ' ' + fp.d
+        if (fp.name) g.names.add(fp.name)
+      } else {
+        groups.set(key, {
+          key,
+          names: new Set(fp.name ? [fp.name] : []),
+          entityId: fp.entityId,
+          d: fp.d
         })
-        .map((fp) => ({ i: fp.i, name: fp.name, entityId: fp.entityId, d: geoPathString(fp.f) }))
-        // Drop degenerate features that project to nothing (e.g. the zero-size
-        // "Ostrogoths" slivers in the 600 epoch) — they render no path anyway.
-        .filter((fp) => fp.d.length > 0),
-    [features]
-  )
+      }
+    }
+    return [...groups.values()].map((g) => ({
+      key: g.key,
+      name: g.names.size ? [...g.names].join(' / ') : undefined,
+      entityId: g.entityId,
+      d: g.d
+    }))
+  }, [features])
 
   // Is the selected entity actually present on the map this epoch?
   const selectedPresent = useMemo(
@@ -79,6 +113,19 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
     for (const r of relations) if (r.target) m.set(r.target.id, r.type)
     return m
   }, [relations])
+
+  // Paint order: dim context first, tracked polities above it, relation targets
+  // above those, and the selected polity last so its highlight/stroke is never
+  // occluded by a neighbour drawn later in the source array.
+  const orderedPaths = useMemo(() => {
+    const prio = (fp: { entityId?: string }): number => {
+      if (fp.entityId && fp.entityId === selectedId) return 3
+      if (fp.entityId && targetType.has(fp.entityId)) return 2
+      if (fp.entityId) return 1
+      return 0
+    }
+    return [...featurePaths].sort((a, b) => prio(a) - prio(b))
+  }, [featurePaths, selectedId, targetType])
 
   const arrows = useMemo(() => {
     if (!selected || !selectedPresent) return []
@@ -233,7 +280,7 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
           <path d={graticulePath} className="graticule" />
 
           <g className="countries">
-            {featurePaths.map((fp) => {
+            {orderedPaths.map((fp) => {
               const entityId = fp.entityId
               const isSelected = !!entityId && entityId === selectedId
               const tint = entityId ? targetType.get(entityId) : undefined
@@ -247,11 +294,11 @@ export function WorldMap({ year, selectedId, onSelect }: Props): JSX.Element {
                 style = { fill: REL_FILL[tint], stroke: REL_STROKE[tint] }
               } else if (entityId) {
                 const c = getCountry(entityId)?.color ?? '#6b7da0'
-                style = { fill: hexA(c, 0.34), stroke: hexA(c, 0.85) }
+                style = { fill: hexA(c, 0.4), stroke: hexA(c, 0.88) }
               }
               return (
                 <path
-                  key={fp.i}
+                  key={fp.key}
                   d={fp.d}
                   className={cls}
                   style={style}

@@ -557,11 +557,12 @@ button {
   display: block;
 }
 /* Static present-day landmass behind the period polygons, so sparse early
-   eras still read as Europe rather than empty sea. Dimmer than .country
-   (#1b2740) so tracked polities and context still stand out on top. */
+   eras still read as Europe rather than empty sea. A warm, desaturated land
+   tone (vs. the cool navy ocean) gives the classic antique-atlas land/sea
+   contrast and keeps the continent legible even where no polity is tracked. */
 .land-base {
-  fill: #141c2b;
-  stroke: rgba(150, 176, 212, 0.22);
+  fill: #232a33;
+  stroke: rgba(176, 158, 110, 0.28);
   stroke-width: 0.5;
 }
 .graticule {
@@ -569,10 +570,12 @@ button {
   stroke: rgba(120, 150, 190, 0.07);
   stroke-width: 0.5;
 }
-/* Context land — a polity we don't track this era (fill/stroke from CSS). */
+/* Context land — a polity we don't track this era. A notch warmer/lighter than
+   the backdrop with a faint gold coastline, so unlabeled tribal regions read as
+   "land we just don't track" rather than empty sea. */
 .country {
-  fill: #1b2740;
-  stroke: rgba(150, 176, 212, 0.34);
+  fill: #313845;
+  stroke: rgba(196, 174, 116, 0.3);
   stroke-width: 0.55;
   transition: filter 0.12s ease;
 }
