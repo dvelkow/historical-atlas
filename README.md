@@ -1,27 +1,18 @@
 # Historical Atlas
 
-A polished **desktop historical atlas** of Europe — *not a game* — for exploring the continent's
-history from **0 AD to the present**. Scrub a year dial and the **borders morph to that era**;
-click any polity to see its government, capital, alliances, wars, notable interactions, and
-historic figures, with directional arrows drawn between related states.
+![Historical Atlas — Europe in 1942 with Nazi Germany selected](docs/screenshot-1942-germany.png)
 
-Built with **Electron + React + TypeScript + Vite**. The renderer is a pure web app
-(SVG + d3-geo + the Web Audio API); Electron is the desktop shell.
+So here's the gist: it's an interactive map of Europe you can scrub through time. Spin the year
+dial from **0 AD all the way to today** and the borders morph era by era — Rome, the Carolingians,
+the messy patchwork of the Holy Roman Empire, nation-states, the EU. Click on any country and it
+lights up: who ran it, its capital and government, who it was at war with (red arrows), who it
+allied with (blue), the people who mattered, and the big events happening around that year.
 
-```
-┌───────────────────────────── Historical Atlas ─────────────────────────────┐
-│  brand                        ( year dial )            🔊   EUROPE·APPROX   │
-├───────────────┬─────────────────────────────────────────────┬──────────────┤
-│ Selected      │         era-accurate map of Europe           │  Relations    │
-│ polity        │         (borders change by year)             │  · Wars       │
-│ (era, capital,│         + outgoing relation arrows            │  · Allies     │
-│  government…) │         → red war · blue ally · orange interaction          │
-│ Notable       │                                             │              │
-│ figures       │                                             │              │
-├───────────────┴─────────────────────────────────────────────┴──────────────┤
-│ Events near <year>   ·   era strip (Roman … Contemporary)                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
+The shot above is **1942 with Nazi Germany selected** — you can see the war arrows reaching toward
+the USSR and Britain, and the Axis link down to Italy.
+
+It's a desktop app (**Electron + React + TypeScript + Vite**), but the whole thing is really just a
+web UI under the hood (SVG + d3-geo + a little Web Audio), so you can run it right in a browser too.
 
 ## Features
 
